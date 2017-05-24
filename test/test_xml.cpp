@@ -1,4 +1,4 @@
-#include"xml.h"
+#include"jhtools/xml.h"
 #include<string>
 #include<gtest/gtest.h>
 
@@ -61,3 +61,19 @@ TEST_F(XmlTest, load_xml_file){
 	EXPECT_NE(bbs[0], make_array4i(200, 11, 229, 142));
 }
 
+TEST_F(XmlTest, img_size){
+	xml_->load_xml_file(xml_path + "/mov_010_025673_u.xml");
+	auto size = xml_->img_size();
+	EXPECT_EQ(size, make_array3i(544,416,3));
+	xml_->load_xml_file(xml_path + "/mov_001_007623.xml");
+	size = xml_->img_size();
+	EXPECT_EQ(size, make_array3i(528, 224, 3));
+}
+
+TEST_F(XmlTest, bbxs_in_xml){
+	auto bbs = bbxs_in_xml(xml_path + "/mov_010_025673_u.xml");
+
+	EXPECT_EQ(bbs.size(), 1);
+	EXPECT_EQ(bbs[0], make_array4i(133, 240, 200, 320));
+	EXPECT_NE(bbs[0], make_array4i(200, 11, 229, 142));
+}

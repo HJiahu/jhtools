@@ -1,9 +1,9 @@
-#include"ezlog.h"
+#include"jhtools/ezlog.h"
 
 #include<cstdio>
 #include<ctime>
 #include<functional>
-#include<utils/termcolor.hpp>
+#include"jhtools/utils/termcolor.hpp"
 
 using namespace std;
 
@@ -193,4 +193,6 @@ namespace jhtools
 #endif //NO_TERMINAL_DISP  
     }
     
+	static const auto const avoid_race_conditions_for_EZlog_in_multithread_(EZlog::Instance());
 }
+

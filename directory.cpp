@@ -1,8 +1,16 @@
+/*
+     -- 
+
+    Copyright (c) 2017 HJiahu <HJiahu@outlook.com>
+
+    All rights reserved. Use of this source code is governed by a
+    MIT license that can be found in the LICENSE file.
+*/
 #include<iostream>
 #include<string>
 #include<algorithm>
-#include"ezlog.h"
-#include"directory.h"
+#include"jhtools/ezlog.h"
+#include"jhtools/directory.h"
 
 
 using namespace std;
@@ -10,7 +18,7 @@ using namespace std;
 namespace jhtools
 {
     
-    cwStrDequePtr Directory::sub_dirs (bool refresh)
+	Directory::StrDequePtr Directory::sub_dirs(bool refresh)
     {
         if (refresh) //rescan the dir
         {
@@ -26,7 +34,7 @@ namespace jhtools
         
         return sub_dir_ptr_;
     }
-    cwStrDequePtr Directory::regular_files (bool refresh)
+	Directory::StrDequePtr Directory::regular_files(bool refresh)
     {
         if (refresh) //rescan the dir
         {
@@ -43,7 +51,24 @@ namespace jhtools
         return regular_files_ptr_;
     }
     
-    bool Directory::has_file (const std::wstring& file_name, bool refresh)
+	Directory::StrDequePtr Directory::regular_files(const std::string suffix, bool refresh){
+		shared_ptr<deque<string> > ptr(new deque<string>);
+		for (const auto& x : *regular_files(refresh)){
+			if (endwith(x, suffix))ptr->push_back(x);
+		}
+
+		return ptr;
+	}
+	//StrDequePtr regular_files(const std::string suffix, bool refresh = false);
+	Directory::StrDequePtr Directory::regular_files(const char* suffix, bool refresh){
+		shared_ptr<deque<string> > ptr(new deque<string>);
+		for (const auto& x : *regular_files(refresh)){
+			if (endwith(x, suffix))ptr->push_back(x);
+		}
+
+		return ptr;
+	}
+	bool Directory::has_file(const std::string& file_name, bool refresh)
     {
         if (refresh || (sub_dir_ptr_ == nullptr && regular_files_ptr_ == nullptr))
         {
@@ -57,10 +82,7 @@ namespace jhtools
         
         else { return false; }
     }
-    bool Directory::has_file (const std::string& file_name, bool refresh)
-    {
-        return has_file (string2wstring (file_name), refresh);
-    }
+
     
     int Directory::count_all (bool refresh)
     {
@@ -87,19 +109,20 @@ namespace jhtools
     
     void Directory::scan_dir()
     {
-        sub_dir_ptr_.reset (new wStrDeque);
-        regular_files_ptr_.reset (new wStrDeque);
-        tinydir_dir dir;
+		//
+        sub_dir_ptr_.reset (new StrDeque);
+        regular_files_ptr_.reset (new StrDeque);
+		tfDIR dir;
         
-        if (tinydir_open (&dir, path_.c_str()) == -1)
+		if (tfDirOpen(&dir, path_.c_str()) != 1)
         {
-            EZLOG (Log_level::FATAL) << "Can not open this dir :"<<wstring2string(path_);
+            EZLOG (Log_level::FATAL) << "Can not open this dir :"<<path_;
         }
         
         while (dir.has_next)
         {
-            tinydir_file file;
-            tinydir_readfile (&dir, &file);
+			tfFILE file;
+			tfReadFile(&dir, &file);
             
             //printf("%s", file.name);
             if (file.is_dir)
@@ -111,13 +134,13 @@ namespace jhtools
             else
                 if (file.is_reg)
                 {
-                    regular_files_ptr_->push_back (file.name);
+					regular_files_ptr_->push_back(file.name);
                 }
                 
             //printf("\n");
-            tinydir_next (&dir);
+			tfDirNext(&dir);
         }
         
-        tinydir_close (&dir);
+		tfDirClose(&dir);
     }
 }

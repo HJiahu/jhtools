@@ -14,13 +14,15 @@ namespace jhtools
     //logs will be storaged in file LOG_FILE_NAME
     static std::string LOG_FILE_NAME ("ezlog.log");
     
-    //if defined this macro ,all logs would not show on terminal.
+    //if defined this macro below ,all logs would not show on terminal.
     //#define NO_TERMINAL_DISP  //just storage msg in log file
     
     //level less than LOG_LEVEL will not write into log file
     enum class Log_level { INFO, DBUG, WARN, ERR, FATAL};
     const Log_level LOG_LEVEL = Log_level::INFO; //default all log msg will write into log file
     
+    //if no define _DEBUG  macro, EZLOG_D (debug) will do nothing
+
     /****** end of configures ******/
     
     class Logstream;
@@ -30,15 +32,24 @@ namespace jhtools
 #define EZLOG(level) \
 	jhtools::EZlog::log(level,std::string(" [")+__FILE__+": "+std::to_string(__LINE__)+"]")
     
+#ifdef _DEBUG
+#define EZLOG_D(msg) \
+	jhtools::EZlog::Instance().log_debug(msg+std::string(" [")+__FILE__+": "+std::to_string(__LINE__)+"]")
+#else
+#define EZLOG_D(msg)  ;
+#endif //EZLOG_DEBUG_DO_NOTHING
+    
     class EZlog
     {
         public:
-            EZlog (const EZlog&) = delete;
+            EZlog (const EZlog&) = default;
             EZlog& operator= (const EZlog&) = delete;
-			EZlog(const EZlog&&) = delete;
-			EZlog& operator= (const EZlog&&) = delete;
+            EZlog (const EZlog&&) = delete;
+            EZlog& operator= (const EZlog&&) = delete;
             
             //use this function to access methods of EZlog
+            //to avoid race conditions in multithreads this function will be called
+            //in ezlog.cpp after the defination of all funs in EZlog
             static EZlog& Instance()
             {
                 if (!log_instance_)
@@ -47,12 +58,23 @@ namespace jhtools
                 }
                 
                 return *log_instance_;
+                /* //use double if and mutex to avoid race conditons
+                if(log_instance_ == nullptr){
+                	mutex.lock();
+                	if(log_instance_ == nullptr)
+                		log_instance_ = new EZlog;
+                	mutex.unlock();
+                	else return log_instance_;
+                }
+                else return *log_instance_;
+                
+                */
             }
             
             void log_info (const std::string&);//white
-			void log_debug(const std::string&); //cyan
+            void log_debug (const std::string&); //cyan
             void log_warn (const std::string&); //yellow
-            void log_error (const std::string&); //red            
+            void log_error (const std::string&); //red
             void log_fatal (const std::string&); //on_read
             
             static std::shared_ptr<Logstream> log (Log_level = Log_level::INFO, const std::string suffix = "");
@@ -68,8 +90,8 @@ namespace jhtools
             void writeline2console (const std::string&, TERM_COLOR color, const std::string &endwith = "\n");
             
         private:
-			EZlog();//There is only one EZlog instance in the process (singleton)
-
+            EZlog();//There is only one EZlog instance in the process (singleton)
+            
             
             static EZlog* log_instance_;
             static std::string log_file_;

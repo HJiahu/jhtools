@@ -1,0 +1,113 @@
+#include<gtest/gtest.h>
+#include"jhtools/utils.h"
+#include<string>
+
+using namespace std;
+using namespace jhtools;
+
+TEST(utils,replace_last){
+	//wstring str_1(L"this is a test.test");
+	//wstring str_2(L"this is a test-test");
+	string str_2("");
+	string str_3("haha.xyz");
+	string str_4("abc.defghij");
+	//test empty string
+	EXPECT_EQ(str_2, replace_tail(str_2, "", "xyz"));
+	//xy is not tail
+	EXPECT_EQ(str_3,replace_tail(str_3,"xy","zyx"));
+	//target string is empty
+	EXPECT_EQ(str_3, replace_tail(str_3, "", "zyx"));
+
+	EXPECT_NE(replace_tail(str_3, "xhaha.xyz", "zyx"),"xzyx");
+	EXPECT_NE(replace_tail(str_3, "xhaha.xyz", "zyx"), "zyx");
+	EXPECT_EQ(replace_tail(str_3, "yz", "zyx"),"haha.xzyx");
+	EXPECT_EQ(replace_tail(str_3, ".xyz", ".z"), "haha.z");
+}
+
+TEST(endwith, all){
+	EXPECT_TRUE(endwith("this is bad", "bad"));
+	EXPECT_FALSE(endwith("this is a bad", "ba"));
+}
+
+
+TEST(startwith, all){
+	EXPECT_TRUE(startwith("this is bad", "th"));
+	EXPECT_FALSE(startwith("this is a bad", "hi"));
+}
+
+TEST(file, copy){
+	EXPECT_FALSE(copy_file("E:/jhtools/test/imgs", "E:/jhtools/test/imgs"));
+	EXPECT_FALSE(copy_file("", "E:/jhtools/test/imgs"));
+	EXPECT_FALSE(copy_file("E:/jhtools/test/imgs/nonface0.png", "E:/jhtools/test/imgs"));
+}
+
+
+TEST(substrs, all){
+	string test_string_1 = R"(<name>head</name>
+		<pose>Unspecified< / pose>
+		<truncated>0< / truncated>
+		<difficult>0< / difficult>
+		<bndbox>
+		<xmin>500</xmin>
+		<ymin>190</ymin>
+		<xmax>592</xmax>
+		<ymax>283</ymax>
+		</bndbox>)";
+
+	auto result = substrs(test_string_1, "<bndbox>", "</bndbox>");
+	EXPECT_EQ(result.size(),1);
+	auto in_xmin = substrs(result[0], "<xmin>", "</xmin>");
+	EXPECT_EQ(in_xmin[0], "500");
+	auto in_ymax = substrs(result[0], "<ymax>", "</ymax>");
+	EXPECT_EQ(in_ymax[0], "283");
+
+
+	string test_string_2 = R"(
+  <object>
+    <name>head</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>322</xmin>
+      <ymin>81</ymin>
+      <xmax>422</xmax>
+      <ymax>186</ymax>
+    </bndbox>
+  </object>
+  <object>
+    <name>head</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>364</xmin>
+      <ymin>286</ymin>
+      <xmax>471</xmax>
+      <ymax>393</ymax>
+    </bndbox>
+  </object>
+  <object>
+    <name>head</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>547</xmin>
+      <ymin>212</ymin>
+      <xmax>640</xmax>
+      <ymax>309</ymax>
+    </bndbox>
+  </object>
+</annotation>
+	)";
+
+
+	result = substrs(test_string_2, "<bndbox>", "</bndbox>");
+	EXPECT_EQ(result.size(), 3);
+	in_xmin = substrs(result[1], "<xmin>", "</xmin>");
+	EXPECT_EQ(in_xmin[0], "364");
+	in_ymax = substrs(result[2], "<ymax>", "</ymax>");
+	EXPECT_EQ(in_ymax[0], "309");
+
+}
