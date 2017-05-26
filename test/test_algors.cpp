@@ -65,5 +65,6 @@ TEST(RetainMaxNElems, actions){
 		EXPECT_TRUE(result_buff.size() == retain_num);
 		EXPECT_EQ(retain_max_n.current_size() , retain_num);
 		EXPECT_EQ(buffff, result_buff);
+		EXPECT_EQ(buffff,retain_max_n.asc_order_data());
 	}
 }
