@@ -1,0 +1,1430 @@
+cmder /register all 
+python
+Cmder
+Cmder /registor all
+Cmder registor all
+cmder /register all 
+python
+mkdir flask
+cd flask\
+dir
+clear
+ls
+cmder /registor all
+pip install virtualenv
+python -m pip install --upgrade pip
+virtualenv venv
+venv\Scripts\activate
+pip install flask
+pip install flask
+clear
+Python
+python
+pip install flask
+git status
+git pull
+ls
+dir
+python dit_tree.py 
+dir
+python dit_tree.py 
+python dir_tree.py 
+python
+pip install flask
+clear
+Python
+python
+pip install flask
+git status
+git pull
+dir
+python dit_tree.py 
+python dit_tree.py 
+python dir_tree.py 
+pip install flask-user
+pip install flask-mail
+pip install MySQLdb
+pip install pymysql
+python
+mkdir django
+cd django\
+pip install django
+django-admin startproject mysite
+cd mysite\
+python manage.py startapp foo
+cd ..
+cd foo\
+ls
+dir
+ls
+dir
+python manage.py inspectdb >>models.py
+python manage.py inspectdb >>models.py
+cd foo\
+ls
+dir
+python manage.py inspectdb >>models.py
+ls
+dir
+python manage.py makemigrations 
+python manage.py makemigrations foo
+python manage.py makemigrations 
+python manage.py makemigrations foo
+python manage.py sqlmigrate foo 0001
+python manage.py migrate
+python manage.py shell
+git add -A
+git pull
+javac
+git status
+javac
+git pull
+git log
+git status
+make
+mingw32-make.exe 
+mingw32-make.exe install
+mingw32-make.exe 
+mingw32-make.exe 
+mingw32-make.exe 
+mingw32-make.exe 
+mingw32-make.exe install
+git log
+git add -A
+git commit -m "init"
+rm .git\index.lock 
+ls -al
+rm .git\index.lock 
+ls -al
+vim guess.c 
+tcc -run guess.c 
+vim guess.c 
+tcc -run guess.c 
+pip install sympy
+pip install pyglet
+python
+pip install ipython
+pip install Matplotlib 
+ipython
+python
+ipython
+python
+jupyter-notebook.exe 
+python
+jupyter-notebook.exe 
+ping www.qiusleaf.xyz
+ipython
+python
+ipython
+python
+jupyter-notebook.exe 
+ssh root@121.42.59.6
+sshHJiahu@121.42.59.6
+ssh HJiahu@121.42.59.6
+ssh hjiahu@121.42.59.6
+ssh hjiahu@121.42.59.6
+python
+jupyter-notebook.exe 
+ssh root@121.42.59.6
+sshHJiahu@121.42.59.6
+ssh HJiahu@121.42.59.6
+ls
+clear
+ssh hjiahu@121.42.59.6
+cmder /register all
+source
+venv\Scripts\activate.bat 
+ls
+ls
+ls
+source
+clear
+.\venv\Scripts\activate.bat 
+CLEAR
+clear
+.\venv\Scripts\activate.bat 
+python
+python
+sh venv\Scripts\activate
+sh .\venv\Scripts\activate
+ipython
+python
+ipython
+python
+jupyter-notebook.exe 
+ssh root@121.42.59.6
+sshHJiahu@121.42.59.6
+ssh HJiahu@121.42.59.6
+ssh hjiahu@121.42.59.6
+ssh hjiahu@121.42.59.6
+python
+jupyter-notebook.exe 
+ssh root@121.42.59.6
+sshHJiahu@121.42.59.6
+ssh HJiahu@121.42.59.6
+ls
+clear
+ssh hjiahu@121.42.59.6
+cmder /register all
+source
+venv\Scripts\activate.bat 
+ls
+ls
+source
+clear
+.\venv\Scripts\activate.bat 
+CLEAR
+clear
+python
+sh venv\Scripts\activate
+sh .\venv\Scripts\activate
+.\venv\Scripts\activate.bat 
+python
+vim test.py
+ls
+vim test.py 
+python test.py 
+python
+ptyh
+python
+python
+python
+ping 121.42.59.6
+vim bigdigits.py
+gvim bigdigits.py 
+rm bigdigits.py 
+ping www.hdu.edu.cn
+python
+ssh arm001@192.168.1.105
+cleaer
+clc
+ssh arm001@192.168.0.105
+ifconfi
+ipconfig.exe 
+ssh arm001@192.168.1.105
+ping 210.32.158.231
+wget.exe -h
+wget.exe -p -r -np -k https://nodemcu.readthedocs.io/en/master/
+ifconfi
+ipconfig.exe 
+ping 192.168.1.107
+ping 192.168.1.105
+ssh arm001@192.168.1.105
+ipconfig.exe 
+ping 192.168.1.107
+ping 192.168.1.105
+ssh arm001@192.168.1.105
+vim c.c
+vim cl
+tcc.exe -run c.c 
+vim c.c 
+vim c.c 
+tcc.exe -run c.c 
+vim c.c 
+vim c.c 
+ping 121.42.59.6\
+ping 121.42.59.6
+ping 121.42.59.6\
+ping 121.42.59.6
+python
+python
+ping 121.42.59.6\
+ping 121.42.59.6
+vim avergel_ans.py
+python avergel_ans.py 
+vim avergel_ans.py 
+python
+ifconfi
+ipconfig.exe 
+ssh arm001@192.168.1.105
+ping 210.32.158.231
+wget.exe -h
+wget.exe -p -r -np -k https://nodemcu.readthedocs.io/en/master/
+ifconfi
+ipconfig.exe 
+ping 192.168.1.107
+ping 192.168.1.105
+ssh arm001@192.168.1.105
+ipconfig.exe 
+ping 192.168.1.107
+ping 192.168.1.105
+ssh arm001@192.168.1.105
+vim c.c
+vim cl
+tcc.exe -run c.c 
+vim c.c 
+vim c.c 
+tcc.exe -run c.c 
+vim c.c 
+vim c.c 
+ping 121.42.59.6\
+ping 121.42.59.6
+ping 121.42.59.6\
+ping 121.42.59.6
+python
+python
+ping 121.42.59.6\
+ping 121.42.59.6
+vim avergel_ans.py
+python avergel_ans.py 
+vim avergel_ans.py 
+python
+tcc input.c 
+123
+vim input.
+vim input.c
+vim input.c 
+tcc -run input.c 
+python
+vim input.c
+vim c.c 
+ping 121.42.59.6\
+ping 121.42.59.6
+ping 121.42.59.6\
+ping 121.42.59.6
+python
+python
+ping 121.42.59.6\
+ping 121.42.59.6
+vim avergel_ans.py
+python avergel_ans.py 
+vim avergel_ans.py 
+python
+tcc input.c 
+123
+vim input.
+vim input.c
+vim input.c 
+ls
+tcc -run input.c 123456
+tcc -run input.c 
+python avergel_ans.py 
+vim avergel_ans.py 
+python
+tcc input.c 
+123
+vim input.
+ls
+tcc -run input.c 123456
+vim input.c 
+rm input.c 
+vim input.c
+tcc -run input.c 
+vim input.c
+vim input.c 
+ls
+tcc -run input.c 123456
+tcc -run input.c 
+python avergel_ans.py 
+vim avergel_ans.py 
+python
+tcc input.c 
+123
+vim input.
+ls
+tcc -run input.c 123456
+vim input.c 
+rm input.c 
+vim input.c
+tcc -run input.c 
+vim distance.c
+tcc -run distance.c 
+vim c.c
+tcc -run c.c
+123
+vim input.
+ls
+tcc -run input.c 123456
+vim input.c 
+rm input.c 
+vim input.c
+tcc -run input.c 
+vim distance.c
+tcc -run distance.c 
+vim c.c
+tcc -run c.c
+vim c.c 
+git log
+git
+git log
+git
+venv\Scripts\activate.bat 
+ls
+vim test.py 
+tcc -run input.c 123456
+vim input.c 
+rm input.c 
+vim input.c
+tcc -run input.c 
+vim distance.c
+tcc -run distance.c 
+vim c.c
+tcc -run c.c
+vim c.c 
+git log
+git
+git log
+git
+venv\Scripts\activate.bat 
+vim test.py 
+FLASK_APP = test.py 
+set FLASK_APP = test.py 
+flask run --host=0.0.0.0
+python
+set FLASK_APP=0.0.0.0
+set FLASK_APP=test.py 
+ls
+set FLASK_APP=hello.py
+flask.exe run --host=0.0.0.0
+set FLASK_APP = test.py 
+python
+set FLASK_APP=0.0.0.0
+set FLASK_APP=test.py 
+flask.exe run --host=0.0.0.0
+ls
+venv\Scripts\activate.bat 
+set FLASK_APP=hello.py 
+set FLASK_APP=hello
+set FLASK_APP=hello.py
+flask run --host=0.0.0.0
+set FLASK_APP=hello
+venv\Scripts\activate.bat 
+set FLASK_APP=hello.py
+flask run --host=0.0.0.0
+flask run --host=0.0.0.0
+ssh hjiahu@121.42.59.6
+vim widgets.html 
+vim 
+vim
+vim
+vim 
+git
+git log
+git
+venv\Scripts\activate.bat 
+vim test.py 
+FLASK_APP = test.py 
+set FLASK_APP = test.py 
+flask run --host=0.0.0.0
+python
+set FLASK_APP=0.0.0.0
+set FLASK_APP=test.py 
+ls
+set FLASK_APP=hello.py
+flask.exe run --host=0.0.0.0
+set FLASK_APP = test.py 
+python
+set FLASK_APP=0.0.0.0
+set FLASK_APP=test.py 
+flask.exe run --host=0.0.0.0
+ls
+venv\Scripts\activate.bat 
+set FLASK_APP=hello.py 
+set FLASK_APP=hello
+set FLASK_APP=hello.py
+flask run --host=0.0.0.0
+set FLASK_APP=hello
+venv\Scripts\activate.bat 
+set FLASK_APP=hello.py
+flask run --host=0.0.0.0
+flask run --host=0.0.0.0
+ssh hjiahu@121.42.59.6
+vim widgets.html 
+vim 
+vim
+vim
+vim 
+vim c
+vim c.c
+tcc -run c.c 
+vim chapter_1.c
+vim
+vim chapter_1.c 
+vim chapter_1.c 
+vim
+vim 
+vim c
+vim c.c
+tcc -run c.c 
+vim chapter_1.c
+vim
+vim chapter_1.c 
+vim chapter_1.c 
+tcc -run chapter_1.c
+gdb
+gcc
+man
+gcc
+gdb
+floor
+man
+man
+mingw-get install msys-man
+floor
+man
+mingw-get install msys-man
+man
+man 3 floor
+mingw-get install msys-man
+man
+ys-man
+man
+ys-man
+make && make install
+man floor
+man 3 floor
+man printf
+man
+vim c.c
+python
+git clone https://github.com/klen/python-mode.git
+vim py.py
+vim py.py
+gvim py.py
+vim .vimrc 
+vim
+gvim py.py
+vim .vimrc 
+vim
+vim .vimrc
+vim ~\.vimrc 
+vim c.c
+git clone https://github.com/klen/python-mode.git
+python
+git clone https://github.com/klen/python-mode.git
+vim py.py
+vim py.py
+gvim py.py
+vim .vimrc 
+vim
+gvim py.py
+vim .vimrc 
+vim
+vim .vimrc
+vim ~\.vimrc 
+git clone https://github.com/klen/python-mode.git
+gvim c.c
+ls
+vim c.c
+vim c.c
+vim py.py
+gvim py.py
+vim
+vim 
+python
+ls
+clear
+vim py.py
+gvim py.py
+vim .vimrc 
+vim
+vim .vimrc
+vim ~\.vimrc 
+git clone https://github.com/klen/python-mode.git
+gvim c.c
+ls
+vim c.c
+vim py.py
+gvim py.py
+vim
+vim 
+ls
+gvim py.py
+vim py.py
+python py.py 
+python2
+python
+clear
+tcc -run c.c
+vim c.c
+\q
+make && make install
+man floor
+man printf
+man ls
+man printf
+man ls
+./mingw-get install msys-groff
+mingw-get install msys-groff
+make
+make
+make
+vim c.c
+vim cc.c
+make
+make
+vim c.c
+vim cc.c
+vim test.c
+vim test.c 
+tcc -run test.c 
+make
+vim c.c
+make
+tcc -run c.c
+tcc -run c.c
+vim py.py
+vim p.py
+vim py.py
+python py.py 
+rm py.py
+python
+vim py.py
+vim p.py
+vim py.py
+python py.py 
+rm py.py
+python
+mkdir chp1
+cd chp1\
+clear
+vim exercise_1.py
+ls
+vim exercise_2.py 
+python
+clear
+tcc -run c.c
+vim c.c
+\q
+make && make install
+man floor
+man printf
+man ls
+man printf
+man ls
+./mingw-get install msys-groff
+mingw-get install msys-groff
+make
+make
+make
+vim c.c
+vim cc.c
+make
+make
+vim c.c
+vim cc.c
+vim test.c
+vim test.c 
+tcc -run test.c 
+make
+make
+tcc -run c.c
+tcc -run c.c
+vim py.py
+vim p.py
+vim py.py
+python py.py 
+rm py.py
+python
+vim py.py
+vim p.py
+rm py.py
+python
+mkdir chp1
+cd chp1\
+clear
+vim exercise_1.py
+ls
+vim exercise_2.py 
+vim c.c
+vim py.py
+python
+python py.py 
+vim py.py 
+94701666050254987932260861146558230394535379329335672487982961844043495537923117729972224000000000000 30920282858696340707840863082849837403792242083588467815746880619913491564200800652078612480000000000 28117820629783145752115873204622873174957948825199004896282566883532523420076624508621317734400000000 82130782975286851441715398316520698082167795719072138680632278379906935018605333618108410101760000000 45704626380229481153372318653216558465734236575257710944505822703925548014884266894486728081408000000 26020747367985879734231578109105412357244731625958745865049716390179693892056256184534249745940480000 43337012841748421382069894049466438132940679933286171609340767439947348991486130071318084791671193600 23969720658651189747118012061057143650340764344627522435752836975156299662933487959194010377087090688 40134565353266999387579130131288000666286242049487118846032383059131291716864129885722968716753156177 04114380550276949479442260611594800566343305742064051019127525600261597959334510402864523409240182751 09538367273238176552320344125971528487055242938175083876449672016224974245027678946463490131946557166 57298379527717213600518699389595229783738061356212322972511214654115727593174080683423236414793504734 26422573984391147968456455462843802209689493993466844215809868895621840281993191001412448045018284166 95516090846108121691926245361930983966623649654185491352070783317103437850973939991257078760066272908 15964481761497309522733620825737885569961284688766942216863704985393094065876545992131370884059645617 01527678402962551665687594951421475868664769066777917417345971536707715599947656852839547504494277511 41405464130725547532432587355307757799171587541435684023958293813771098351951844304612383704134735310 72507081641574759205162306240436214753229576413535186142281213246807121467315215203289516844845303838 66156656743080273652852567866010041868035801828723074973744340451998694179276302291092145834154585608 97848823905926259970209939472709539774634011737286921225057123429398759470312487176537538542446856328 79348709496892095714015418938011581836486512677954443760548384922228090914999876894760370007489820750
+ping www.mp4ba.com
+gcc
+gcc -v
+make
+make
+mingw32-make.exe 
+make install
+mingw32-make.exe install
+myql
+myql
+mysql -u root -p 
+myql
+myql
+mysql -u root -p 
+arp
+ls
+arp -a
+ping 192.168.1.108
+ssh t702@192.168.1.108
+ssh t704@192.168.1.108
+ssh  t704@192.168.1.108
+myql
+mysql -u root -p 
+arp
+ls
+arp -a
+ping 192.168.1.108
+ssh t702@192.168.1.108
+ssh t704@192.168.1.108
+ssh  t704@192.168.1.108
+pip3
+python -m pip3 install --upgrade pip3
+python -m pip3 install --upgrade pip
+python -m pip install --upgrade pip
+vim pygame.py
+python3
+vim pygame.py 
+python pygame.py 
+python
+pip3 install pygame
+python
+dir
+python
+ping www.mp4ba.com
+gcc
+gcc -v
+make
+make
+mingw32-make.exe 
+make install
+mingw32-make.exe install
+myql
+myql
+mysql -u root -p 
+myql
+myql
+mysql -u root -p 
+arp
+ls
+arp -a
+ping 192.168.1.108
+ssh t702@192.168.1.108
+ssh t704@192.168.1.108
+ssh  t704@192.168.1.108
+myql
+mysql -u root -p 
+arp
+arp -a
+ping 192.168.1.108
+ssh t702@192.168.1.108
+ssh t704@192.168.1.108
+ssh  t704@192.168.1.108
+pip3
+python -m pip3 install --upgrade pip3
+python -m pip3 install --upgrade pip
+python -m pip install --upgrade pip
+vim pygame.py
+python3
+vim pygame.py 
+python pygame.py 
+python
+pip3 install pygame
+python
+dir
+python
+rm c.c
+vim read_print_file.c
+vim test.in
+vim test.out 
+clear
+vim count_words.c
+tcc -run read_print_file.c 
+vim read_print_file.c 
+vim count_words.c 
+tcc -run count_words.c 
+vim test.in 
+rem count_words.c 
+rm count_words.c read_print_file.c 
+ls
+tcc -run c.c
+vim c.c
+vim c.c
+net 192.168.0.173
+net 192.168.0.173 9792
+ 192.168.0.173 9792
+ls
+net 192.168.0.173
+net 192.168.0.173 9792
+ 192.168.0.173 9792
+ls
+vim belt_connecter.py 
+python
+ssh hjiahu@121.42.59.6
+vim belt_connecter.py 
+vim belt_connecter.py 
+ls
+vim test.py
+python test.py 
+ls
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+net 192.168.0.173
+net 192.168.0.173 9792
+ 192.168.0.173 9792
+ls
+net 192.168.0.173
+net 192.168.0.173 9792
+ 192.168.0.173 9792
+ls
+vim belt_connecter.py 
+python
+ssh hjiahu@121.42.59.6
+vim belt_connecter.py 
+vim belt_connecter.py 
+ls
+vim test.py
+python test.py 
+ls
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+ls
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+ls
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+mysql -u root -p 
+vim power_plant_database.py
+python
+mysql -u root -p 
+pip3 install sqlalchemy
+pip3 install sqlacodegen
+pip install PyMySQL
+pip3 install PyMySQL
+sqlacodegen mysql+pymysql://jiahu:jiahu123@127.0.0.1:3306/power_plant > power_plant_models.py
+vim power_plant_models.py 
+mysql -u jiahu -p
+mysql -u root -p
+ls
+wget.exe -p -r -np -k http://doc.ipple.net/discuz/
+wget.exe -p -r -np -k http://doc.ipple.net/discuz/
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+mysql -u root -p 
+sqlacodegen mysql+pymysql://jiahu:jiahu123@127.0.0.1:3306/power_plant > power_plant_models.py
+python
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+python test.py 
+mysql -u root -p 
+vim power_plant_database.py
+ls
+python power_plant_database.py 
+python
+python
+mysql -u root -p
+python power_plant_database.py 
+python
+python
+mysql -u root -p
+python insert_belt_data_example.py 
+mysql -u root -p
+python
+python test.py 
+mysql -u root -p 
+vim power_plant_database.py
+python power_plant_database.py 
+python
+python
+ls caj
+ls caj*
+ls
+ls cao*
+mysql -u root -p -D power_plant < caojing_belt_data_upto_160925.sql 
+mysql -u root -p
+sqlacodegen mysql+pymysql://jiahu:jiahu123@127.0.0.1:3306/power_plant > power_plant_models.py
+python
+ls
+vim hello.py 
+ls
+gvim hello.py 
+gvim hello.py 
+venv\Scripts\activate.bat 
+python hello.py 
+wget.exe -p -r -np -k http://cn.bing.com/
+ls
+ping 101.95.98.218
+virtualenv venv
+.\venv\Scripts\activate.bat 
+pip3 install flask
+pip3 install pymssql
+ls
+source .\venv\Scripts\activate
+.\venv\Scripts\activate
+python
+source .\venv\Scripts\activate
+.\venv\Scripts\activate
+python
+.\cmder.exe /REGISTER ALL
+.\Cmder.exe /REGISTER ALL
+dir C:\Program Files\cmder_mini
+cd C:\Program Files\cmder_mini
+ls
+dir
+./Cmder.exe /REGISTER ALL
+Cmder.exe /REGISTER ALL
+cd ..
+ls
+virtualenv.exe venv
+venv\Scripts\activate.bat 
+pip install flask-user
+pip install Flask-Stormpath
+pip install Flask-Security
+mysql -u root -p
+./Cmder.exe /REGISTER ALL
+Cmder.exe /REGISTER ALL
+ls
+cd plants_web\
+venv\Scripts\activate.bat 
+cd ..
+cd recoder_py\
+dir
+python recoder.py 
+virtualenv.exe venv
+venv\Scripts\activate.bat 
+ls
+venv\Scripts\activate.bat 
+pip install flask-user
+pip install Flask-Stormpath
+pip install Flask-Security
+mysql -u root -p
+./Cmder.exe /REGISTER ALL
+Cmder.exe /REGISTER ALL
+cd flask_plant\
+cd plants_web\
+venv\Scripts\activate.bat 
+cd ..
+cd recoder_py\
+ls
+dir
+python recoder.py 
+ls
+dir
+venv\Scripts\activate.bat 
+pip install -r requirments.txt 
+python manage.py db init
+python manage.py  db migrate -m "initial migration"
+python manage.py db upgrade
+ls
+mysql -u root -p
+mysql -u root -p 
+python3
+python
+python
+ping 192.168.0.81
+ping 192.168.0.82
+./Cmder.exe /REGISTER ALL
+Cmder.exe /REGISTER ALL
+cd flask_plant\
+ls
+cd plants_web\
+venv\Scripts\activate.bat 
+cd ..
+cd recoder_py\
+dir
+python recoder.py 
+mysql -u root -p
+mysql -u root -p
+virtualenv.exe 
+virtualenv.exe venv
+python
+venv\Scripts\activate.bat 
+exit()
+mysql -u root -p
+mysql -u root -p
+virtualenv.exe 
+virtualenv.exe venv
+python
+venv\Scripts\activate.bat 
+exit()
+rm -rf venv\
+pip install -r requirments.txt 
+python -m pip install --upgrade pip
+cd recoder_py\
+cd ..
+cd plants_web\
+ls
+dir
+python manage.py db init
+python manage.py  db migrate -m "initial migration"
+python manage.py db upgrade
+vim recoder.py 
+dir
+python recoder.py 
+python recoder.py 
+python recoder.py 
+python recoder.py 
+python recoder.py 
+python recoder.py 
+python recoder.py 
+python manage.py db init
+python manage.py  db migrate -m "initial migration"
+python manage.py db upgrade
+mysql -u root -p
+telnet
+python recoder.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python main.py 
+python
+python main.py 
+git pull
+python main.py 
+netsat
+netsta
+netstat
+cd /d C:\my_tools\cmder_mini
+Execute `.\cmder.exe /REGISTER ALL`
+.\cmder.exe /REGISTER ALL
+python
+mysql -u root -p
+mysql
+mysql -u root -p 
+python
+python main.py 
+git pull
+python main.py 
+netsat
+netsta
+netstat
+cd /d C:\my_tools\cmder_mini
+Execute `.\cmder.exe /REGISTER ALL`
+.\cmder.exe /REGISTER ALL
+python
+mysql
+mysql -u root -p 
+cd ..
+cd plants_web\
+ls
+venv\Scripts\activate.bat 
+python manage.py db upgrade
+python manage.py db init
+python manage.py  db migrate -m "initial migration"
+mysql -u root -p
+exit()
+.\cmder.exe /REGISTER ALL
+python
+pip install virtualenv
+python -m pip install --upgrade pip
+virtualenv.exe venv
+venv\Scripts\activate.bat 
+pip install -r requirments.txt 
+ls
+git status
+ssh hjiahu@121.42.59.6
+venv\Scripts\activate.bat 
+ls
+python manage.py db init
+python manage.py  db migrate -m "initial migration"
+git status
+ssh hjiahu@121.42.59.6
+venv\Scripts\activate.bat 
+rm -rf migrations
+ls
+python manage.py db init
+python manage.py  db migrate -m "initial migration"
+mysql -u -p
+mysql -u root -p
+exit90
+wxit()
+exit()
+venv\Scripts\activate.bat 
+ls
+python manage.py db init
+python manage.py  db migrate -m "initial migration"
+mysql -u root -p
+mysql -u root -p
+venv\Scripts\activate.bat 
+python manage.py db init
+python manage.py  db migrate -m "initial migration"
+python manage.py db upgrade
+ls ..
+..\plants_web\venv\Scripts\activate.bat 
+ls
+python main.py 
+python
+python
+python
+cd /d C:\my_tools\cmder_mini
+.\cmder.exe /REGISTER ALL
+.\cmder.exe /REGISTER ALL
+mysql -h 27.115.11.254 -u db_pumin_web -p
+pip install virtualenv
+python -m pip install --upgrade pip
+tcc
+vim
+gvim
+ls
+mv link.vimrc .vimrc
+gvim
+ssh hjiahu@121.42.59.6
+gvim
+virtualenv.exe venv
+venv\Scripts\activate.bat 
+pip install -r requirments.txt 
+ls
+python tornado_server.py 
+ssh hjiahu@121.42.59.6
+venv\Scripts\activate.bat 
+ls
+python tornado_server.py 
+venv\Scripts\activate.bat 
+ls
+python manage.py 
+python runserver  manage.py 
+python --runserver  manage.py 
+python runserver --host 0.0.0.0  manage.py 
+python manage.py runserver
+python
+python manage.py runserver
+python
+python
+python
+scripts\build_win.cmd 
+scripts\build_win.cmd 
+cmake
+scripts\build_win.cmd 
+cmake
+pip install ninja
+python -m pip install --upgrade pip
+scripts\build_win.cmd 
+ls
+python tornado_server.py 
+ssh hjiahu@121.42.59.6
+venv\Scripts\activate.bat 
+ls
+python tornado_server.py 
+venv\Scripts\activate.bat 
+ls
+python manage.py 
+python runserver  manage.py 
+python --runserver  manage.py 
+python runserver --host 0.0.0.0  manage.py 
+python manage.py runserver
+python
+python manage.py runserver
+python
+python
+python
+scripts\build_win.cmd 
+scripts\build_win.cmd 
+cmake
+scripts\build_win.cmd 
+cmake
+pip install ninja
+python -m pip install --upgrade pip
+scripts\build_win.cmd 
+vim test.
+tcc -run test.c
+vim test.c
+vim periodic_strings.c 
+tcc -run periodic_strings.c 
+vim periodic_strings.c 
+vim primary_arithmetic.c 
+python 
+ipython
+pip install opencv
+pip install cv2
+ipython --pylib
+ipython -pylib
+ipython --pylab
+ipython --pylab
+pip3 install sympy
+ipython --pylab
+ipython --pylab
+python
+python3
+pip3.5 install sympy
+pip install sympy
+python3 -m pip install --upgrade pip
+python -m pip freeze
+pip3 install sympy
+pip install sympy
+pip
+jupyter --notebook
+jupyter notebook
+jupyter notebook --port=9999
+Scripts\activate.bat 
+pip install sympy
+pip install numpy
+pip install scipy
+pip3 install sympy
+jupyter --generate-config
+Scripts\activate.bat 
+pip install matplotlib
+pip3 install matplotlib
+Scripts\activate.bat 
+ls
+cd Scripts\
+.\pip.exe install matplotlib
+pip install sympy
+pip
+jupyter --notebook
+jupyter notebook
+"c:\Program Files\Anaconda3a\Scripts\jupyter notebook --port=9999
+"c:\Program Files\Anaconda3a\Scripts\jupyter notebook --port=9999"
+"c:\Program Files\Anaconda3a\Scripts\jupyter" notebook --port=9999"
+jupyter notebook --port=9999
+jupyter botebook --port=9999
+jupyter notebook --port=9999
+cmake
+cmake -DOPENCV_EXTRA_MODULES_PATH=.\modules\saliency\ 
+jupyter notebook --port=9999
+find . -type d -name "*.py"
+find . -name "*.py"
+find  "*.py"
+git branch master
+git checkout master
+cmake
+cmake -DOPENCV_EXTRA_MODULES_PATH=.\modules\saliency\ 
+ipython 
+jupyter notebook --port=9999
+python
+pip install pyxml
+pip install yaml
+python
+ls >> a.txt
+ls >> a.txt
+ls >> a.txt
+pip install opencv
+pip install opencv*
+pip install cv*
+ls >> TrainVal.txt
+jupyter notebook --port=9999
+ipython --pylib
+ipython 
+jupyter notebook --port=9999
+ipython --pylib
+ipython 
+tcc -run c.c
+vim c.c
+vim c.c
+ssh hjiahu@121.42.59.6
+ssh root@115.159.118.165
+ls -al
+java
+javaw
+crack.bat 
+ls >> a.txt
+doxygen.exe 
+doxygen.exe 
+doxygen.exe .\dox 
+doxygen.exe .\dox 
+git log
+git reset --hard
+ls -al
+vim LICENSE 
+git reset --hard
+ls -al
+vim LICENSE 
+sh build.sh 
+ls -al
+vim LICENSE 
+sh build
+sh build.sh 
+cd build\
+ls
+MSBuild
+python
+ls
+venv\Scripts\activate.bat 
+pip install -r requirments.txt 
+python
+sh run_vehicle_detection_video1.sh 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+.\projectd_x86.exe cars.xml dataset\video1.avi 
+python
+python 
+ping 115.159.118.165
+ls>>heads.txt
+ls >> noheads.txt
+ls >> noheads.txt
+adb connect 127.0.0.1
+adb connect 127.0.0.1:53001
+adb connect 127.0.0.1
+adb connect 127.0.0.1:53001
+IntraFaceDetector.exe 
+IntraFaceDetector.exe snapshot.jpg 
+ping www.github.com
+ssh root@115.159.118.165
+conda install -y --channel https://conda.anaconda.org/eugene protobuf
+conda install -y numpy
+adb connect 127.0.0.1:62001
+adb devices
+nox_adb connect 127.0.0.1:62001
+nod_adb devices
+nox_adb devices
+ssh hjiahu@121.42.59.6
+git config --list
+git config --list
+git log
+git tag
+git log -s
+git branch 
+git checkout Difficulty-Beginner
+python
+ls >> a.txt
+ping Star.j@gp-awesome.com
+pinggp-awesome.com
+ping gp-awesome.com
+ls >> neg.txt
+git log
+ls >> face_with_glasses.txt
+ls >> face_with_hat.txt
+ls face_with_mask.txt
+ls >> face_with_mask.txt
+ls >> face_with_nothing.txt
+ls >> face_with_glasses_widen.txt
+ls >> face_with_mask_widen.txt
+ls >> face_with_nothing_widen.txt
+sh create_lmdb.sh 
+ls >> glass_test_label.txt
+ls >> test_nothing_label.txt
+ls >> test_mask_label.txt
+ls >> test_hat_label.txt
+sh create_lmdb.sh 
+ls >> nothing.txt
+ls >> mask.txt
+ls >> hat.txt
+ls >> glasses.txt
+sh create_lmdb.sh 
+ls face_with_mask.txt
+ls >> face_with_mask.txt
+ls >> face_with_nothing.txt
+sh create_lmdb.sh 
+ls >> hat.txt
+ls >> hat.txt
+ls >> glasses.txt
+sh create_lmdb.sh 
+ls >> face_with_hat_widen.txt
+sh create_lmdb.sh 
+ls >> hat.txt
+ls >> hat.txt
+ls >> glasses.txt
+ls >> face_with_hat_widen.txt
+sh create_lmdb.sh 
+ls >> glasses.txt
+python
+python
+git clone https://github.com/HJiahu/Matlab_in_MM.git
+cd Matlab_in_MM\
+ls
+git add -A
+git commit -m "init"
+git push 
+90/7
+python
+111*83
+python
+10000-4329
+python
+python
+scripts\build_win.cmd 
+git tag
+python
+python
+scripts\build_win.cmd 
+git tag
+ssh pi@192.168.1.101
+ssh root@192.168.1.101
+ssh root@192.168.1.107
+sshpi@192.168.1.107
+ssh pi@192.168.1.107
+ssh pi@192.168.1.107
+sshpi@192.168.1.107
+ssh pi@192.168.1.107
+ping 192.168.1.107
+ssh pi@192.168.1.107
+ssh pi@192.168.1.107
+ssh pi@192.168.1.107
+ssh pi@192.168.1.107
+ssh pi@192.168.1.107
+scripts\build_win.cmd 
+ls -al
+cd ..
+ls -al
+cd .git\
+ls 
+scp
+scp .\bing_src.tar pi@192.168.1.101:/home/jiahu/bing
+ls 
+ssh root@192.168.1.101
+sshpi@192.168.1.101
+ssh pi@192.168.1.101
+ssh pi@192.168.1.101
+scp .\bing_src.tar pi@192.168.1.101:/home/jiahu/bing
+scp bing_src.tar pi@192.168.1.101:/home/jiahu/bing
+scp bing_src.tar pi@192.168.1.101:/home/jiahu/
+ssh pi@192.168.1.101
+scp bing_src.tar pi@192.168.1.101:/home/jiahu/
+ssh pi@192.168.1.101
+scp DeepID_head_model.tar pi@192.168.1.101:/home/jiahu/
+scp bing_src.tar pi@192.168.1.101:/home/jiahu/
+scp DeepID_head_model.tar pi@192.168.1.101:/home/jiahu/
+ssh pi@192.168.1.101
+ssh pi@192.168.1.101
+ssh pi@192.168.1.101
+ssh pi@192.168.1.101
+ssh pi@192.168.1.101

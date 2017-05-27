@@ -14,6 +14,7 @@ namespace jhtools
 #ifdef _NOEXCEPT
     #define noexcept _NOEXCEPT
 #endif
+	//下面的函数的测试模块默认是关闭的（因为太耗时）！！！！！！！！！！！！
     //*************使用RetainMaxNElems前需要为其中保存的元素重载运算符  >  ***************
     //也可以直接重载<  与 == 然后使用using namespase std::rel_ops  utility中的工具
     //下面使用两种方式实现RetainMaxNElems，分别是优先队列与堆，

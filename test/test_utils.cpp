@@ -5,23 +5,28 @@
 using namespace std;
 using namespace jhtools;
 
-TEST(utils,replace_last){
+TEST(utils,replace_tail){
 	//wstring str_1(L"this is a test.test");
 	//wstring str_2(L"this is a test-test");
-	string str_2("");
-	string str_3("haha.xyz");
-	string str_4("abc.defghij");
-	//test empty string
-	EXPECT_EQ(str_2, replace_tail(str_2, "", "xyz"));
-	//xy is not tail
-	EXPECT_EQ(str_3,replace_tail(str_3,"xy","zyx"));
-	//target string is empty
-	EXPECT_EQ(str_3, replace_tail(str_3, "", "zyx"));
 
-	EXPECT_NE(replace_tail(str_3, "xhaha.xyz", "zyx"),"xzyx");
-	EXPECT_NE(replace_tail(str_3, "xhaha.xyz", "zyx"), "zyx");
-	EXPECT_EQ(replace_tail(str_3, "yz", "zyx"),"haha.xzyx");
-	EXPECT_EQ(replace_tail(str_3, ".xyz", ".z"), "haha.z");
+	auto assist_replace_fun = [](string str,const string&old_str,const string &new_str)->string{
+		replace_tail(str,old_str,new_str);
+		return str;
+	};
+
+	const string str_2c("");
+	const string str_3c("haha.xyz");
+	const string str_4c("abc.defghij");
+	//test empty string
+	EXPECT_FALSE(replace_tail(string(str_2c),"","xyz"));
+	//xy is not tail
+	EXPECT_EQ(str_3c, assist_replace_fun(str_3c, "xy", "zyx"));
+	//target string is empty
+
+	EXPECT_NE(assist_replace_fun(str_3c, "xhaha.xyz", "zyx"), "xzyx");
+	EXPECT_NE(assist_replace_fun(str_3c, "xhaha.xyz", "zyx"), "zyx");
+	EXPECT_EQ(assist_replace_fun(str_3c, "yz", "zyx"), "haha.xzyx");
+	EXPECT_EQ(assist_replace_fun(str_3c, ".xyz", ".z"), "haha.z");
 }
 
 TEST(endwith, all){

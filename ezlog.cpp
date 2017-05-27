@@ -3,7 +3,7 @@
 #include<cstdio>
 #include<ctime>
 #include<functional>
-#include"jhtools/utils/termcolor.hpp"
+#include"jhtools/termcolor.hpp"
 
 using namespace std;
 

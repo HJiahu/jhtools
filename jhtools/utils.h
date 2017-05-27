@@ -30,22 +30,26 @@ namespace jhtools
         return result;
     }
     
-    inline std::string replace_tail (const std::string& str, \
-                                     const std::string& target_str, \
-                                     const std::string& replace_str)
+    // in place replace, return true if replace successfully (changed the str string )
+    //retrun false if str was not been changed
+    inline bool replace_tail (std::string& str, \
+                              const std::string& tail_str, \
+                              const std::string& new_str)
     {
-        if (str.size() == 0 || target_str.size() == 0) { return str; }
+        if (str.size() == 0 || tail_str.size() == 0) { return false; }
         
         else
         {
-            size_t pos = str.rfind (target_str);
+            size_t pos = str.rfind (tail_str);
             
-            if (pos == std::string::npos || str.size() - pos != target_str.size()) { return str; }
+            //str.size() - pos != tail_str.size() is used to check tail_str is in str but is not a tail string
+            if (pos == std::string::npos || str.size() - pos != tail_str.size()) { return false; }
             
             else
             {
                 //std::string new_str(str);
-                return std::string (str).replace (pos, str.size(), replace_str);
+                str.replace (pos, str.size(), new_str);
+                return true;
             }
         }
     }
@@ -117,26 +121,37 @@ namespace jhtools
         return true;
     }
     
-	//return all substr between pre_delim and rear_delim in src_str 
+    //return all substr between pre_delim and rear_delim in src_str
     inline std::vector<std::string> substrs (
         const std::string &src_str,
-        const std::string &pre_delim,const std::string &rear_delim)
+        const std::string &pre_delim,
+        const std::string &rear_delim)
     {
-		std::vector<std::string> result;
-		if (src_str.size() == 0)return result;
-		else{
-			int pos = 0;
-			while (pos < src_str.size()){
-				auto pre_delim_pos = src_str.find(pre_delim, pos);
-				if (pre_delim_pos == std::string::npos)return result;
-				auto rear_delim_pos = src_str.find(rear_delim, pos + pre_delim.size());
-				if (rear_delim_pos == std::string::npos)return result;
-				auto begin_pos = pre_delim_pos + pre_delim.size();
-				result.push_back(src_str.substr(begin_pos, rear_delim_pos - begin_pos));
-				pos = rear_delim_pos + rear_delim.size();
-			}
-			return result;
-		}
+        std::vector<std::string> result;
+        
+        if (src_str.size() == 0) { return result; }
+        
+        else
+        {
+            int pos = 0;
+            
+            while (pos < src_str.size())
+            {
+                auto pre_delim_pos = src_str.find (pre_delim, pos);
+                
+                if (pre_delim_pos == std::string::npos) { return result; }
+                
+                auto rear_delim_pos = src_str.find (rear_delim, pos + pre_delim.size());
+                
+                if (rear_delim_pos == std::string::npos) { return result; }
+                
+                auto begin_pos = pre_delim_pos + pre_delim.size();
+                result.push_back (src_str.substr (begin_pos, rear_delim_pos - begin_pos));
+                pos = rear_delim_pos + rear_delim.size();
+            }
+            
+            return result;
+        }
     }
 }
 

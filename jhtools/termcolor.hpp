@@ -9,6 +9,10 @@
 //! :license: BSD, see LICENSE for details
 //!
 
+//very easy to use :
+//cout << termcolor::grey<<"hello ,I am green words"
+//
+
 #ifndef TERMCOLOR_HPP_
 #define TERMCOLOR_HPP_
 
