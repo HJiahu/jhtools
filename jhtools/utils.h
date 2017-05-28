@@ -6,7 +6,31 @@
 
 namespace jhtools
 {
-
+	
+    //funs declarations
+    inline std::wstring string2wstring (const std::string&str);
+    inline std::string  wstring2string (const std::wstring&wstr);
+    inline std::string current_time_YMDT();//2017-01-01 14:24:11
+    inline bool replace_tail (std::string& str, const std::string& tail_str, const std::string& new_str);
+    inline bool endwith (const std::string &str, const std::string &tail);
+    inline bool startwith (const std::string &str, const std::string &leader_str);
+    inline bool copy_file (const std::string &src_file, const std::string &dst_file);
+    //return all substrs between pre_delim and rear_delim in src_str
+    inline std::vector<std::string> substrs (const std::string &src_str, const std::string &pre_delim, const std::string &rear_delim);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /******************************* inline or static implements******************************* */
+    
+    
     inline std::wstring string2wstring (const std::string&str)
     {
         std::wstring result;
@@ -28,6 +52,23 @@ namespace jhtools
         }
         
         return result;
+    }
+    
+    inline std::string current_time_YMDT()
+    {
+        char datetime[99];
+        time_t current_t = time (nullptr);
+        struct tm current_time;
+        localtime_s (&current_time, &current_t);
+        sprintf_s (datetime, \
+                   "%d-%02d-%02d %02d:%02d:%02d", \
+                   1900 + current_time.tm_year, \
+                   1 + current_time.tm_mon, \
+                   current_time.tm_mday, \
+                   current_time.tm_hour, \
+                   current_time.tm_min, \
+                   current_time.tm_sec);
+        return std::string (datetime);
     }
     
     // in place replace, return true if replace successfully (changed the str string )
@@ -64,13 +105,13 @@ namespace jhtools
         }
     }
     
-    inline bool startwith (const std::string &str, const std::string &tail)
+    inline bool startwith (const std::string &str, const std::string &leader_str)
     {
-        if (str.size() == 0 || tail.size() == 0) { return false; }
+        if (str.size() == 0 || leader_str.size() == 0) { return false; }
         
         else
         {
-            return str.compare (0, tail.size(), tail) == 0;
+            return str.compare (0, leader_str.size(), leader_str) == 0;
         }
     }
     
@@ -104,24 +145,6 @@ namespace jhtools
         return true;
     }
     
-    inline bool remove (const std::string &file_path)
-    {
-        if (file_path.size() == 0)
-        {
-            EZLOG (Log_level::ERR) << "illegal file name.";
-            return false;
-        }
-        
-        if (0 != ::remove (file_path.c_str()))
-        {
-            EZLOG (Log_level::ERR) << "error when remove file :" << file_path;
-            return false;
-        }
-        
-        return true;
-    }
-    
-    //return all substr between pre_delim and rear_delim in src_str
     inline std::vector<std::string> substrs (
         const std::string &src_str,
         const std::string &pre_delim,
@@ -133,7 +156,7 @@ namespace jhtools
         
         else
         {
-            int pos = 0;
+            size_t pos = 0;
             
             while (pos < src_str.size())
             {

@@ -501,6 +501,7 @@ namespace jhtools
         if (!exists (path) && !is_directory (path)) { return -1; }
         
         tfDirOpen (&dir, path.string().c_str());
+        int file_count = 0;
         
         while (dir.has_next)
         {
@@ -517,13 +518,17 @@ namespace jhtools
             else
             {
                 if (std::string (file.name) != "." && std::string (file.name) != "..")
-                { name_deque.push_back (file.name); }
+                {
+                    file_count++;
+                    name_deque.push_back (file.name);
+                }
             }
             
             tfDirNext (&dir);
         }
         
         tfDirClose (&dir);
+		return file_count;
     }
 #else
     

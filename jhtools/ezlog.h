@@ -7,6 +7,7 @@
 #include<sstream>
 #include<mutex>
 #include<memory>
+#include"jhtools/termcolor.hpp"
 
 namespace jhtools
 {
@@ -22,15 +23,26 @@ namespace jhtools
     const Log_level LOG_LEVEL = Log_level::INFO; //default all log msg will write into log file
     
     //if no define _DEBUG  macro, EZLOG_D (debug) will do nothing
-
+    
     /****** end of configures ******/
     
-    class Logstream;
+    //use EZlog::log(LEVEL) to choose different log level
+    class Logstream : public std::ostringstream
+    {
+        public:
+            Logstream (Log_level level = Log_level::INFO, const std::string suffix = "") : level_ (level), suffix_ (suffix) {  }
+            
+            virtual ~Logstream();
+            
+        private:
+            Log_level level_;
+            std::string suffix_;//this string will be appended to log msg
+    };
     
     
     //Macro EZLOG depends on EZlog::log() and will append file and line number where EZLOG was called
 #define EZLOG(level) \
-	jhtools::EZlog::log(level,std::string(" [")+__FILE__+": "+std::to_string(__LINE__)+"]")
+	jhtools::EZlog::create_logstream(level,std::string(" [")+__FILE__+": "+std::to_string(__LINE__)+"]")
     
 #ifdef _DEBUG
 #define EZLOG_D(msg) \
@@ -42,7 +54,9 @@ namespace jhtools
     class EZlog
     {
         public:
+            //EZlog() is private and defined below
             EZlog (const EZlog&) = default;
+            //EZlog object can not move and copy
             EZlog& operator= (const EZlog&) = delete;
             EZlog (const EZlog&&) = delete;
             EZlog& operator= (const EZlog&&) = delete;
@@ -71,26 +85,201 @@ namespace jhtools
                 */
             }
             
-            void log_info (const std::string&);//white
-            void log_debug (const std::string&); //cyan
-            void log_warn (const std::string&); //yellow
-            void log_error (const std::string&); //red
-            void log_fatal (const std::string&); //on_read
+            void log_info (const std::string& msg) //white
+            {
+                std::string str (current_time_YMDT() + "[INFO]   " + msg);
+                
+                if (Log_level::INFO >= LOG_LEVEL)
+                {
+                    writeline2logfile (str);
+                }
+                
+                writeline2console (str, TERM_COLOR::ON_GREY);
+            }
+            void log_debug (const std::string&msg) //cyan
+            {
+                std::string str (current_time_YMDT() + "[DEBUG]  " + msg);
+                
+                if (Log_level::DBUG >= LOG_LEVEL)
+                {
+                    writeline2logfile (str);
+                }
+                
+                writeline2console (str, TERM_COLOR::CYAN);
+            }
+            void log_warn (const std::string& msg) //yellow
+            {
+                std::string str (current_time_YMDT() + "[WARN]   " + msg);
+                
+                if (Log_level::WARN >= LOG_LEVEL)
+                {
+                    writeline2logfile (str);
+                }
+                
+                writeline2console (str, TERM_COLOR::YELLOW);
+            }
+            void log_error (const std::string&msg) //red
+            {
+                std::string str (current_time_YMDT() + "[ERROR]  " + msg);
+                
+                if (Log_level::ERR >= LOG_LEVEL)
+                {
+                    writeline2logfile (str);
+                }
+                
+                writeline2console (str, TERM_COLOR::RED);
+            }
+            void log_fatal (const std::string&msg) //on_read
+            {
+                std::string str (current_time_YMDT() + "[FATAL]  " + msg);
+                
+                if (Log_level::FATAL >= LOG_LEVEL)
+                {
+                    writeline2logfile (str);
+                }
+                
+                writeline2console (str, TERM_COLOR::ON_RED);
+                getchar();
+                exit (1);
+            }
             
-            static std::shared_ptr<Logstream> log (Log_level = Log_level::INFO, const std::string suffix = "");
+            static std::shared_ptr<Logstream> create_logstream (Log_level level = Log_level::INFO, const std::string suffix = "")
+            {
+                return std::shared_ptr<Logstream> (new Logstream (level, suffix));
+            }
             
         private://hlep function
-            std::string current_time_YMDT();
-            void writeline2logfile (const std::string&, const std::string &endwith = "\n");
+            inline std::string current_time_YMDT()
+            {
+                char datetime[99];
+                time_t current_t = time (nullptr);
+                struct tm current_time;
+                localtime_s (&current_time, &current_t);
+                sprintf_s (datetime, \
+                           "%d-%02d-%02d %02d:%02d:%02d", \
+                           1900 + current_time.tm_year, \
+                           1 + current_time.tm_mon, \
+                           current_time.tm_mday, \
+                           current_time.tm_hour, \
+                           current_time.tm_min, \
+                           current_time.tm_sec);
+                return std::string (datetime)+" ";
+            }
+            void writeline2logfile (const std::string&msg, const std::string &endwith = "\n")
+            {
+                log_file_mutex_.lock();
+                
+                if (log_file_stream_.rdstate() == std::ios_base::goodbit)
+                {
+                    log_file_stream_ << msg << endwith << std::flush;
+                }
+                
+                else
+                {
+                    std::cout << termcolor::on_magenta << "can not write to log file:" << log_file_ << std::endl;
+                };
+                
+                log_file_mutex_.unlock();
+            }
             enum class TERM_COLOR
             {
                 GREY, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, ON_GREY, \
                 ON_RED, ON_GREEN, ON_YELLOW, ON_BLUE, ON_MAGENTA, ON_CYAN, ON_WHITE
             };
-            void writeline2console (const std::string&, TERM_COLOR color, const std::string &endwith = "\n");
+            void writeline2console (const std::string&msg, TERM_COLOR color, const std::string &endwith = "\n")
+            {
+#ifndef NO_TERMINAL_DISP
+                console_mutex_.lock();
+                std::string msg_ = std::string ("[Ezlog] ") + msg;
+                
+                switch (color)
+                {
+                    case TERM_COLOR::GREY:
+                        std::cout << termcolor::grey << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::RED:
+                        std::cout << termcolor::red << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::GREEN:
+                        std::cout << termcolor::green << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::YELLOW:
+                        std::cout << termcolor::yellow << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::BLUE:
+                        std::cout << termcolor::blue << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::MAGENTA:
+                        std::cout << termcolor::magenta << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::CYAN:
+                        std::cout << termcolor::cyan << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::WHITE:
+                        std::cout << termcolor::white << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::ON_GREY:
+                        std::cout << termcolor::on_grey << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::ON_RED:
+                        std::cout << termcolor::on_red << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::ON_GREEN:
+                        std::cout << termcolor::on_green << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::ON_YELLOW:
+                        std::cout << termcolor::on_yellow << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::ON_BLUE:
+                        std::cout << termcolor::on_blue << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::ON_MAGENTA:
+                        std::cout << termcolor::on_magenta << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::ON_CYAN:
+                        std::cout << termcolor::on_cyan << msg_ << endwith;
+                        break;
+                        
+                    case TERM_COLOR::ON_WHITE:
+                        std::cout << termcolor::on_white << msg_ << endwith;
+                        break;
+                        
+                    default:
+                        std::cout << termcolor::underline << msg_ << endwith;
+                        break;
+                }
+                
+                std::cout << termcolor::reset;
+                console_mutex_.unlock();
+#endif //NO_TERMINAL_DISP  
+            }
             
         private:
-            EZlog();//There is only one EZlog instance in the process (singleton)
+            EZlog() //There is only one EZlog instance in the process (singleton)
+            {
+                log_file_ = LOG_FILE_NAME;
+                log_file_stream_ = std::ofstream (log_file_, std::ios::app);
+                
+                if (log_file_stream_.rdstate() != std::ios_base::goodbit)
+                {
+                    std::cout << termcolor::on_magenta << "can not create file :" << log_file_ << \
+                              "\nPlease make sure you have appropriate permission!" << std::endl;
+                }
+            }
             
             
             static EZlog* log_instance_;
@@ -101,43 +290,7 @@ namespace jhtools
     };
     
     
-    //use EZlog::log(LEVEL) to choose different log level
-    class Logstream : public std::ostringstream
-    {
-        public:
-            Logstream (Log_level level = Log_level::INFO, \
-                       const std::string suffix = "") : level_ (level), suffix_ (suffix) {  }
-                       
-            virtual ~Logstream()
-            {
-                switch (level_)
-                {
-                    case Log_level::INFO:
-                        EZlog::Instance().log_info (str() + suffix_);
-                        break;
-                        
-                    case Log_level::DBUG:
-                        EZlog::Instance().log_debug (str() + suffix_);
-                        break;
-                        
-                    case Log_level::WARN:
-                        EZlog::Instance().log_warn (str() + suffix_);
-                        break;
-                        
-                    case Log_level::ERR:
-                        EZlog::Instance().log_error (str() + suffix_);
-                        break;
-                        
-                    case Log_level::FATAL:
-                        EZlog::Instance().log_fatal (str() + suffix_);
-                        break;
-                }
-            }
-            
-        private:
-            Log_level level_;
-            std::string suffix_;//this string will be appended to log msg
-    };
+    
     
     template<typename T>
     std::shared_ptr<Logstream> operator<< (std::shared_ptr<Logstream> ptr, T data)
