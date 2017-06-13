@@ -13,7 +13,8 @@
 //use boost.filesystem or C++17 filesystem if define one of these MACRO
 //#define USE_BOOST_FILESYSTEM_IN_JHTOOLS
 //#define USE_CPPVER17_FILESYSTEM_IN_JHTOOLS
-
+namespace jhtools
+{
 #include <string>
 #include <vector>
 #include <stdexcept>
@@ -32,8 +33,7 @@
 #endif // !USE_FILESYSTEM_IN_JHTOOLS
 
 
-namespace jhtools
-{
+
 #if  !defined(USE_BOOST_FILESYSTEM_IN_JHTOOLS) && !defined(USE_CPPVER17_FILESYSTEM_IN_JHTOOLS)
 
 #if defined(_WIN32)
@@ -528,7 +528,7 @@ namespace jhtools
         }
         
         tfDirClose (&dir);
-		return file_count;
+        return file_count;
     }
 #else
     
