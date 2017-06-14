@@ -1,0 +1,1 @@
+#include"jhtools/ezlog.h"

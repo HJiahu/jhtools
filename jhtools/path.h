@@ -13,8 +13,7 @@
 //use boost.filesystem or C++17 filesystem if define one of these MACRO
 //#define USE_BOOST_FILESYSTEM_IN_JHTOOLS
 //#define USE_CPPVER17_FILESYSTEM_IN_JHTOOLS
-namespace jhtools
-{
+
 #include <string>
 #include <vector>
 #include <stdexcept>
@@ -25,7 +24,7 @@ namespace jhtools
 #include <cstring>
 #include <deque>
 #if !defined(USE_BOOST_FILESYSTEM_IN_JHTOOLS) && !defined(USE_CPPVER17_FILESYSTEM_IN_JHTOOLS)
-    #include "utils/tinyfiles.h"
+    //#include "utils/tinyfiles.h"
 #elif defined(USE_BOOST_FILESYSTEM_IN_JHTOOLS)
     #include<boost/filesystem.hpp>
 #elif defined(USE_CPPVER17_FILESYSTEM_IN_JHTOOLS)
@@ -46,6 +45,8 @@ namespace jhtools
 #if defined(__linux)
     #include <linux/limits.h>
 #endif
+namespace jhtools
+{
     /**
      * \brief Simple class for manipulating paths on Linux/Windows/Mac OS
      *
@@ -62,12 +63,6 @@ namespace jhtools
     inline bool is_regular_file (const path&p);
     inline size_t file_size (const path&p);
     inline bool exists (const path&p);
-    static int file_in_dir (const path&path,
-                            std::deque<std::string> &names_deque,
-                            const std::string &suffix);
-    static bool list_dir (const path &path, std::deque<std::string> &names_deque);
-    static int list_dir_use_tinyfile (const path&path, std::deque<std::string> &name_deque, const std::string& suffix = "");
-    
     class path
     {
         public:
@@ -472,64 +467,7 @@ namespace jhtools
         return p.exists();
     }
     
-    static int file_in_dir (const path&path,
-                            std::deque<std::string> &names_deque,
-                            const std::string &suffix)
-    {
-        names_deque.clear();
-        
-        if (list_dir_use_tinyfile (path, names_deque, suffix) == -1) { return -1; }
-        
-        else
-        {
-            return names_deque.size();
-        }
-    }
     
-    static bool list_dir (const path &path, std::deque<std::string> &names_deque)
-    {
-        names_deque.clear();
-        //file_in_dir has done: if (path.is_directory() && path.exists())
-        return (list_dir_use_tinyfile (path, names_deque) == -1) ? false : true;
-    }
-    
-    static int list_dir_use_tinyfile (const path&path, std::deque<std::string> &name_deque, const std::string& suffix)
-    {
-        tfDIR dir;
-        
-        //this function will abort process when can not open dir
-        if (!exists (path) && !is_directory (path)) { return -1; }
-        
-        tfDirOpen (&dir, path.string().c_str());
-        int file_count = 0;
-        
-        while (dir.has_next)
-        {
-            tfFILE file;
-            tfReadFile (&dir, &file);
-            
-            if (suffix.size() != 0 && \
-                    std::string (".") + file.ext != suffix)
-            {
-                tfDirNext (&dir);
-                continue;
-            }
-            
-            else
-            {
-                if (std::string (file.name) != "." && std::string (file.name) != "..")
-                {
-                    file_count++;
-                    name_deque.push_back (file.name);
-                }
-            }
-            
-            tfDirNext (&dir);
-        }
-        
-        tfDirClose (&dir);
-        return file_count;
-    }
 #else
     
 #if defined(USE_BOOST_FILESYSTEM_IN_JHTOOLS) //using name path
@@ -553,79 +491,79 @@ namespace jhtools
 #endif //:~using name path
     
     
-    static int file_in_dir (const path&p,
-                            std::deque<std::string> &names_deque,
-                            const std::string &suffix = "")
+static int file_in_dir (const path&p,
+                        std::deque<std::string> &names_deque,
+                        const std::string &suffix = "")
+{
+    names_deque.clear();
+    
+    if (p.empty()) { return 0; }
+    
+    else
     {
-        names_deque.clear();
+        int file_count = 0;
     
-        if (p.empty()) { return 0; }
-    
-        else
+        if (fs::exists (p))
         {
-            int file_count = 0;
-    
-            if (fs::exists (p))
+            if (fs::is_regular_file (p))
             {
-                if (fs::is_regular_file (p))
+                return -1;
+            }
+    
+            else
+                if (fs::is_directory (p))
                 {
-                    return -1;
-                }
-    
-                else
-                    if (fs::is_directory (p))
+                    for (fs::directory_entry& x : fs::directory_iterator (p))
                     {
-                        for (fs::directory_entry& x : fs::directory_iterator (p))
-                        {
-                            fs::path p_buff (x);
+                        fs::path p_buff (x);
     
-                            if (fs::is_regular_file (p_buff))
+                        if (fs::is_regular_file (p_buff))
+                        {
+                            if (suffix.size() == 0)
                             {
-                                if (suffix.size() == 0)
+                                file_count++;
+                                names_deque.push_back (p_buff.filename().string());
+                            }
+    
+                            else
+                            {
+                                if (p_buff.extension().string() == suffix)
                                 {
                                     file_count++;
                                     names_deque.push_back (p_buff.filename().string());
                                 }
-    
-                                else
-                                {
-                                    if (p_buff.extension().string() == suffix)
-                                    {
-                                        file_count++;
-                                        names_deque.push_back (p_buff.filename().string());
-                                    }
-                                }
                             }
                         }
                     }
+                }
+        }
+    
+        return file_count;
+    }
+}
+    
+static bool list_dir (const path &p, std::deque<std::string> &names_deque)
+{
+    if (p.empty()) { return false; }
+    
+    else
+    {
+        if (fs::exists (p))
+        {
+            for (fs::directory_entry& x : fs::directory_iterator (p))
+            {
+                names_deque.push_back (x.path().string());
             }
     
-            return file_count;
+            return true;
         }
-    }
-    
-    static bool list_dir (const path &p, std::deque<std::string> &names_deque)
-    {
-        if (p.empty()) { return false; }
     
         else
         {
-            if (fs::exists (p))
-            {
-                for (fs::directory_entry& x : fs::directory_iterator (p))
-                {
-                    names_deque.push_back (x.path().string());
-                }
-    
-                return true;
-            }
-    
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
+}
     
 #endif // !USE_FILESYSTEM_IN_JHTOOLS
 }//namespace jhtools

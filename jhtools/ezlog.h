@@ -1,6 +1,8 @@
 #ifndef EZLOG_h_
 #define EZLOG_h_
 
+#include<cstdio>
+#include<ctime>
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -39,6 +41,12 @@ namespace jhtools
             std::string suffix_;//this string will be appended to log msg
     };
     
+    template<typename T>
+    std::shared_ptr<Logstream> operator<< (const std::shared_ptr<Logstream> &ptr, const T &data)
+    {
+        *ptr << data;
+        return ptr; // ptr's life just in one scope
+    }
     
     //Macro EZLOG depends on EZlog::log() and will append file and line number where EZLOG was called
 #define EZLOG(level) \
@@ -154,6 +162,7 @@ namespace jhtools
                 char datetime[99];
                 time_t current_t = time (nullptr);
                 struct tm current_time;
+#if defined(_WIN32) || defined(_WIN64)
                 localtime_s (&current_time, &current_t);
                 sprintf_s (datetime, \
                            "%d-%02d-%02d %02d:%02d:%02d", \
@@ -163,7 +172,18 @@ namespace jhtools
                            current_time.tm_hour, \
                            current_time.tm_min, \
                            current_time.tm_sec);
-                return std::string (datetime)+" ";
+#elif defined(__unix__) || defined(__unix) || defined(__APPLE__)
+                localtime_r (&current_t, &current_time);
+                sprintf (datetime, \
+                         "%d-%02d-%02d %02d:%02d:%02d", \
+                         1900 + current_time.tm_year, \
+                         1 + current_time.tm_mon, \
+                         current_time.tm_mday, \
+                         current_time.tm_hour, \
+                         current_time.tm_min, \
+                         current_time.tm_sec);
+#endif
+                return std::string (datetime) + " ";
             }
             void writeline2logfile (const std::string&msg, const std::string &endwith = "\n")
             {
@@ -287,18 +307,7 @@ namespace jhtools
             static std::ofstream log_file_stream_;
             static std::mutex log_file_mutex_;
             static std::mutex console_mutex_;
-    };
-    
-    
-    
-    
-    template<typename T>
-    std::shared_ptr<Logstream> operator<< (std::shared_ptr<Logstream> ptr, T data)
-    {
-        *ptr << data;
-        return ptr; // ptr's life just in one scope
-    }
-    
+    };//class EZlog
 }
 
 #endif //EZLOG_h_
