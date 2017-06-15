@@ -117,16 +117,23 @@ TEST(substrs, all){
 
 }
 
-TEST(to_json, fun){
+TEST(stojson, fun){
 	string j_str(R"({
 "china":960,
 "canada":998
 }
 )");
-	auto jn = to_json(j_str);
+	auto jn = stojson(j_str);
 	//cout << jn["china"].int_value() << endl;
 	EXPECT_EQ(jn["china"].int_value(),960);
 	//只有类型对应正确才能获得正确的结果
 	EXPECT_EQ(jn["china"].string_value().size(), 0);
 
+}
+
+TEST(ftojson, fun){
+	auto jn = ftojson(R"(E:\jhtools\test\json.txt)");
+	EXPECT_EQ(jn["china"].int_value(), 960);
+	//只有类型对应正确才能获得正确的结果
+	EXPECT_EQ(jn["china"].string_value().size(), 0);
 }

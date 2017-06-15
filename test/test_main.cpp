@@ -15,7 +15,12 @@ int main (int argc, char ** argv)
 #else
 int main()
 {
-
+	string j_str(R"({
+"china":960,
+"canada":998
+}
+)");
+	auto jn = stojson(j_str);
 	system("pause");
 }
 #endif

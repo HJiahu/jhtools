@@ -2,7 +2,10 @@
 #define JHTOOLS_UTILS_
 #include<string>
 #include<vector>
+#include<fstream>
+#include<sstream>
 #include"ezlog.h"
+#include"path.h"
 #include"json11.hpp"
 
 namespace jhtools
@@ -18,8 +21,8 @@ namespace jhtools
     inline bool copy_file (const std::string &src_file, const std::string &dst_file);
     //return all substrs between pre_delim and rear_delim in src_str
     inline std::vector<std::string> substrs (const std::string &src_str, const std::string &pre_delim, const std::string &rear_delim);
-    inline json11::Json to_json (const std::string& json_str);
-    
+    inline json11::Json stojson (const std::string& json_str);
+    inline json11::Json ftojson (const std::string& file); //读取文件并将其中的内容转化为json对象
     
     
     
@@ -178,7 +181,7 @@ namespace jhtools
         }
     }
     
-    inline json11::Json to_json (const std::string& json_str)
+    inline json11::Json stojson (const std::string& json_str)
     {
         if (json_str.size() == 0) { return json11::Json(); }
         
@@ -188,11 +191,27 @@ namespace jhtools
             auto j = json11::Json::parse (json_str, err);
             
             if (err.size() != 0)
-            { EZLOG (jhtools::Log_level::FATAL) << "in to_json: " << err; }
+            { EZLOG (jhtools::Log_level::FATAL) << "in stojson: " << err; }
             
             return j;
         }
-    }
+    }//stojson
+    
+    inline json11::Json ftojson (const std::string& file)
+    {
+        if (!exists (path (file)))
+        {
+            EZLOG (Log_level::FATAL) << "can not open file :" << file;
+			return json11::Json();
+        }
+        
+        else
+        {
+            std::ifstream in (file);
+            std::string str (static_cast<std::stringstream const&> (std::stringstream() << in.rdbuf()).str());
+			return stojson(str);
+        }
+    }//ftojson
 }//namespace jhtools
 
 
