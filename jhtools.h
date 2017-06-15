@@ -6,5 +6,6 @@
 #include"jhtools/path.h"
 #include"jhtools/termcolor.hpp"
 #include"jhtools/utils.h"
+#include"jhtools/json11.hpp"
 
 #endif // !JHTOOLS_H_

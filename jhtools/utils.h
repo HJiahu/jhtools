@@ -3,10 +3,11 @@
 #include<string>
 #include<vector>
 #include"ezlog.h"
+#include"json11.hpp"
 
 namespace jhtools
 {
-	
+
     //funs declarations
     inline std::wstring string2wstring (const std::string&str);
     inline std::string  wstring2string (const std::wstring&wstr);
@@ -17,7 +18,7 @@ namespace jhtools
     inline bool copy_file (const std::string &src_file, const std::string &dst_file);
     //return all substrs between pre_delim and rear_delim in src_str
     inline std::vector<std::string> substrs (const std::string &src_str, const std::string &pre_delim, const std::string &rear_delim);
-    
+    inline json11::Json to_json (const std::string& json_str);
     
     
     
@@ -176,6 +177,24 @@ namespace jhtools
             return result;
         }
     }
-}
+    
+    inline json11::Json to_json (const std::string& json_str)
+    {
+        if (json_str.size() == 0) { return json11::Json(); }
+        
+        else
+        {
+            std::string err;
+            auto j = json11::Json::parse (json_str, err);
+            
+            if (err.size() != 0)
+            { EZLOG (jhtools::Log_level::FATAL) << "in to_json: " << err; }
+            
+            return j;
+        }
+    }
+}//namespace jhtools
+
+
 
 #endif // !JHTOOLS_UTILS_

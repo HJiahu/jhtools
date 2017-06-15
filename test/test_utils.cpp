@@ -116,3 +116,17 @@ TEST(substrs, all){
 	EXPECT_EQ(in_ymax[0], "309");
 
 }
+
+TEST(to_json, fun){
+	string j_str(R"({
+"china":960,
+"canada":998
+}
+)");
+	auto jn = to_json(j_str);
+	//cout << jn["china"].int_value() << endl;
+	EXPECT_EQ(jn["china"].int_value(),960);
+	//只有类型对应正确才能获得正确的结果
+	EXPECT_EQ(jn["china"].string_value().size(), 0);
+
+}
