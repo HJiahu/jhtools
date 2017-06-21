@@ -58,23 +58,6 @@ namespace jhtools
         return result;
     }
     
-    inline std::string current_time_YMDT()
-    {
-        char datetime[99];
-        time_t current_t = time (nullptr);
-        struct tm current_time;
-        localtime_s (&current_time, &current_t);
-        sprintf_s (datetime, \
-                   "%d-%02d-%02d %02d:%02d:%02d", \
-                   1900 + current_time.tm_year, \
-                   1 + current_time.tm_mon, \
-                   current_time.tm_mday, \
-                   current_time.tm_hour, \
-                   current_time.tm_min, \
-                   current_time.tm_sec);
-        return std::string (datetime);
-    }
-    
     // in place replace, return true if replace successfully (changed the str string )
     //retrun false if str was not been changed
     inline bool replace_tail (std::string& str, \

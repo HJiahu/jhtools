@@ -13,6 +13,7 @@
 
 namespace jhtools
 {
+	inline std::string current_time_YMDT();
     /****** configures ******/
     //logs will be storaged in file LOG_FILE_NAME
     static std::string LOG_FILE_NAME ("ezlog.log");
@@ -157,34 +158,6 @@ namespace jhtools
             }
             
         private://hlep function
-            inline std::string current_time_YMDT()
-            {
-                char datetime[99];
-                time_t current_t = time (nullptr);
-                struct tm current_time;
-#if defined(_WIN32) || defined(_WIN64)
-                localtime_s (&current_time, &current_t);
-                sprintf_s (datetime, \
-                           "%d-%02d-%02d %02d:%02d:%02d", \
-                           1900 + current_time.tm_year, \
-                           1 + current_time.tm_mon, \
-                           current_time.tm_mday, \
-                           current_time.tm_hour, \
-                           current_time.tm_min, \
-                           current_time.tm_sec);
-#elif defined(__unix__) || defined(__unix) || defined(__APPLE__)
-                localtime_r (&current_t, &current_time);
-                sprintf (datetime, \
-                         "%d-%02d-%02d %02d:%02d:%02d", \
-                         1900 + current_time.tm_year, \
-                         1 + current_time.tm_mon, \
-                         current_time.tm_mday, \
-                         current_time.tm_hour, \
-                         current_time.tm_min, \
-                         current_time.tm_sec);
-#endif
-                return std::string (datetime) + " ";
-            }
             void writeline2logfile (const std::string&msg, const std::string &endwith = "\n")
             {
                 log_file_mutex_.lock();
@@ -291,7 +264,7 @@ namespace jhtools
         private:
             EZlog() //There is only one EZlog instance in the process (singleton)
             {
-				//log_file_ and EZlog::log_file_stream_ is initialed in jhtools.cpp 
+                //log_file_ and EZlog::log_file_stream_ is initialed in jhtools.cpp
                 if (log_file_stream_.rdstate() != std::ios_base::goodbit)
                 {
                     std::cout << termcolor::on_magenta << "can not create file :" << log_file_ << \
@@ -306,6 +279,36 @@ namespace jhtools
             static std::mutex log_file_mutex_;
             static std::mutex console_mutex_;
     };//class EZlog
+    
+    
+    inline std::string current_time_YMDT()
+    {
+        char datetime[99];
+        time_t current_t = time (nullptr);
+        struct tm current_time;
+#if defined(_WIN32) || defined(_WIN64)
+        localtime_s (&current_time, &current_t);
+        sprintf_s (datetime, \
+                   "%d-%02d-%02d %02d:%02d:%02d", \
+                   1900 + current_time.tm_year, \
+                   1 + current_time.tm_mon, \
+                   current_time.tm_mday, \
+                   current_time.tm_hour, \
+                   current_time.tm_min, \
+                   current_time.tm_sec);
+#elif defined(__unix__) || defined(__unix) || defined(__APPLE__)
+        localtime_r (&current_t, &current_time);
+        sprintf (datetime, \
+                 "%d-%02d-%02d %02d:%02d:%02d", \
+                 1900 + current_time.tm_year, \
+                 1 + current_time.tm_mon, \
+                 current_time.tm_mday, \
+                 current_time.tm_hour, \
+                 current_time.tm_min, \
+                 current_time.tm_sec);
+#endif
+        return std::string (datetime) + " ";
+    }
 }
 
 #endif //EZLOG_h_
