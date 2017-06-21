@@ -4,8 +4,8 @@
 #include"jhtools/ezlog.h"
 #include"jhtools/algors.h"
 #include"jhtools/path.h"
-#include"jhtools/termcolor.hpp"
+#include"jhtools/termcolor.h"
 #include"jhtools/utils.h"
-#include"jhtools/json11.hpp"
+#include"jhtools/json11.h"
 
 #endif // !JHTOOLS_H_

@@ -9,7 +9,7 @@
 #include<sstream>
 #include<mutex>
 #include<memory>
-#include"jhtools/termcolor.hpp"
+#include"jhtools/termcolor.h"
 
 namespace jhtools
 {
