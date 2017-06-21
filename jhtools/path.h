@@ -139,37 +139,43 @@ namespace jhtools
     }
 #else
     //for directory do not return . and ..
-    inline std::vector<std::string> list_dir (const std::string &dir_path, ListFileType type)
+inline std::vector<std::string> list_dir (const path &dir_path, ListFileType type)
     {
         std::vector<std::string> files;
-        auto root_path = path (dir_path);
-    
-        if (!exists (root_path))
+
+        if (!exists (dir_path))
         {
-            EZLOG (Log_level::ERR) << "no such file or path: " << dir_path;
+            EZLOG (Log_level::ERR) << "no such file or path: " << dir_path.string();
             return files;
         }
-    
-        DIR *dp = opendir (dir_path.c_str());
+
+        DIR *dp = opendir (dir_path.string().c_str());
         struct dirent *dirp;
-    
+
         while ( (dirp = readdir (dp)) != NULL)
         {
-            if (is_directory (root_path / path (std::string (dirp->d_name))))
-            {
-                if (type != ListFileType::DIR) { files.push_back (std::string (dirp->d_name)); }
+            if(std::string(".") == std::string(dirp->d_name) || std::string("..") == std::string(dirp->d_name))continue;
+            auto full_path = dir_path / path (std::string (dirp->d_name)) ;
+            switch(type){
+            case ListFileType::ALL:{
+                files.push_back(dirp->d_name);
             }
-    
-            else
-            {
-                if (type != ListFileType::FILE) { files.push_back (std::string (dirp->d_name)); }
+            break;
+            case ListFileType::DIR:{
+                if(is_directory(full_path))files.push_back(dirp->d_name);
+            }
+            break;
+            case ListFileType::FILE:{
+                if(is_regular_file(full_path))files.push_back(dirp->d_name);
+            }
+            break;
             }
         }
-    
+
         closedir (dp);
-    
-        if (type != ListFileType::FILE && files.size() >= 2) { return std::vector<std::string> (files.begin() + 2, files.end()); }
-    
+
+       // if (type != ListFileType::FILE && files.size() >= 2) { return std::vector<std::string> (files.begin() + 2, files.end()); }
+
         return files;
     }
 #endif

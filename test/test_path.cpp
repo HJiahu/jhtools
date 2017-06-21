@@ -28,8 +28,6 @@ path PathTest::path_;
 
 TEST_F (PathTest, string)
 {
-    EXPECT_EQ (path_.string(), R"(E:\jhtools\test\path_test)");
-    EXPECT_NE (path_.string(), R"(E:\jhtools\test\)");
 }
 
 TEST_F (PathTest, extension)
@@ -44,7 +42,6 @@ TEST_F (PathTest, extension)
 
 TEST_F (PathTest, is_absolute)
 {
-    EXPECT_TRUE (path_.is_absolute());
 }
 
 TEST_F (PathTest, filename)
@@ -59,8 +56,6 @@ TEST_F (PathTest, filename)
 
 TEST_F (PathTest, parent_path)
 {
-    EXPECT_EQ (path_.parent_path().string(), (R"(E:\jhtools\test)"));
-    EXPECT_NE (path_.parent_path().string(), (R"(E:\ools\test)"));
 }
 
 TEST_F (PathTest, is_directory)
@@ -78,9 +73,7 @@ TEST_F (PathTest, is_regular_file)
 TEST_F (PathTest, file_size)
 {
     EXPECT_EQ (file_size (path_ / path ("icons/cmder_blue.ico")), 5272);
-    EXPECT_EQ (file_size (path_ / path ("Cmder.exe")), 129536);
     EXPECT_NE (file_size (path_ / path ("icons/cmder_blue.ico")), 5272 + 200);
-    EXPECT_NE (file_size (path_ / path ("Cmder.exe")), 129536 - 100);
 }
 
 TEST_F (PathTest, exists)
@@ -97,14 +90,14 @@ TEST (path, current_path)
 
 TEST (path, list_dir)
 {
-    EXPECT_EQ (4, list_dir (test_data_path + "/path_test", ListFileType::FILE).size());
+    EXPECT_EQ (3, list_dir (test_data_path + "/path_test", ListFileType::FILE).size());
     EXPECT_EQ (4, list_dir (test_data_path + "/path_test", ListFileType::DIR).size());
-    EXPECT_EQ (8, list_dir (test_data_path + "/path_test", ListFileType::ALL).size());
+    EXPECT_EQ (7, list_dir (test_data_path + "/path_test", ListFileType::ALL).size());
     EXPECT_NE (10, list_dir (test_data_path + "/path_test", ListFileType::ALL).size());
     EXPECT_EQ (7, list_dir (test_data_path + "/path_test/icons", ListFileType::ALL).size());
     EXPECT_EQ (7, list_dir (test_data_path + "/path_test/icons", ListFileType::ALL).size());
-    EXPECT_EQ (8, list_dir (test_data_path + "/path_test/config", ListFileType::ALL).size());
-    EXPECT_EQ (1, list_dir (test_data_path + "/path_test/config", ListFileType::DIR).size());
+    EXPECT_EQ (7, list_dir (test_data_path + "/path_test/config", ListFileType::ALL).size());
+    EXPECT_EQ (0, list_dir (test_data_path + "/path_test/config", ListFileType::DIR).size());
 }
 
 

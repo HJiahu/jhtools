@@ -25,7 +25,9 @@ int main (int argc, char ** argv)
     
     testing::InitGoogleTest (&argc, argv);
     RUN_ALL_TESTS();
+#if defined(_WIN32)
     system ("pause");
+#endif
 }
 #else
 int main()
@@ -36,6 +38,7 @@ int main()
 }
 )");
 	auto jn = stojson(j_str);
+
 	system("pause");
 }
 #endif
