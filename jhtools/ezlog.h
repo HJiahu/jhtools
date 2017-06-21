@@ -291,9 +291,7 @@ namespace jhtools
         private:
             EZlog() //There is only one EZlog instance in the process (singleton)
             {
-                log_file_ = LOG_FILE_NAME;
-                log_file_stream_ = std::ofstream (log_file_, std::ios::app);
-                
+				//log_file_ and EZlog::log_file_stream_ is initialed in jhtools.cpp 
                 if (log_file_stream_.rdstate() != std::ios_base::goodbit)
                 {
                     std::cout << termcolor::on_magenta << "can not create file :" << log_file_ << \
