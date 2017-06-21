@@ -1,5 +1,8 @@
 ﻿#ifndef JHTOOLS_PATH_H_
 #define JHTOOLS_PATH_H_
+#include<string>
+#include<vector>
+#include<dirent.h>
 #include"utils/path.h"
 #include"ezlog.h"
 
@@ -136,9 +139,9 @@ namespace jhtools
     }
 #else
     //for directory do not return . and ..
-    inline vector<string> list_dir (const string &dir_path, ListFileType type)
+    inline std::vector<std::string> list_dir (const std::string &dir_path, ListFileType type)
     {
-        vector<string> files;
+        std::vector<std::string> files;
         auto root_path = path (dir_path);
     
         if (!exists (root_path))
@@ -152,20 +155,20 @@ namespace jhtools
     
         while ( (dirp = readdir (dp)) != NULL)
         {
-            if (is_directory (root_path / path (string (dirp->d_name))))
+            if (is_directory (root_path / path (std::string (dirp->d_name))))
             {
-                if (type != ListFileType::DIR) { files.push_back (string (dirp->d_name)); }
+                if (type != ListFileType::DIR) { files.push_back (std::string (dirp->d_name)); }
             }
     
             else
             {
-                if (type != ListFileType::FILE) { files.push_back (string (dirp->d_name)); }
+                if (type != ListFileType::FILE) { files.push_back (std::string (dirp->d_name)); }
             }
         }
     
         closedir (dp);
     
-        if (type != ListFileType::FILE && files.size() >= 2) { return vector<string> (files.begin() + 2, files.end()); }
+        if (type != ListFileType::FILE && files.size() >= 2) { return std::vector<std::string> (files.begin() + 2, files.end()); }
     
         return files;
     }

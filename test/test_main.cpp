@@ -8,6 +8,7 @@ using namespace jhtools;
 #if defined(_WIN32)
     string test_data_path (R"(E:\jhtools\test)");
 #else
+    string test_data_path("./");
     
 #endif
 

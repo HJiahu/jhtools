@@ -1,0 +1,3 @@
+2017-06-21 16:38:19 [ERROR]  Can not read file :E:/jhtools/test/imgs [../jhtools/utils.h: 117]
+2017-06-21 16:38:19 [ERROR]  file path error. [../jhtools/utils.h: 109]
+2017-06-21 16:38:19 [ERROR]  Can not read file :E:/jhtools/test/imgs/nonface0.png [../jhtools/utils.h: 117]

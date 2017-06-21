@@ -16,7 +16,7 @@ namespace jhtools
     //static value in ezlog
     EZlog* EZlog::log_instance_ = nullptr;
     string EZlog::log_file_ (LOG_FILE_NAME);
-    ofstream EZlog::log_file_stream_ (std::ofstream (log_file_, std::ios::app));
+    ofstream EZlog::log_file_stream_ (log_file_, std::ios::app);
     mutex EZlog::log_file_mutex_;
     mutex EZlog::console_mutex_;
     const EZlog& avoid_race_conditions_for_EZlog_in_multithread_ (EZlog::Instance());
