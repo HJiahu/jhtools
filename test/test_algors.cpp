@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 #include<vector>
 #include<cmath>
@@ -13,14 +13,16 @@ vector<int> sorted_vec;
 
 class AlgorsTest : public testing::Test
 {
-public:
+    public:
         static void SetUpTestCase()
         {
-			for (int i = 0; i < 1000; i++){
-				random_int.push_back(rand()%1000 + 1);
-			}
-			sorted_vec = random_int;
-			sort(sorted_vec.begin(), sorted_vec.end());
+            for (int i = 0; i < 1000; i++)
+            {
+                random_int.push_back (rand() % 1000 + 1);
+            }
+            
+            sorted_vec = random_int;
+            sort (sorted_vec.begin(), sorted_vec.end());
         }
         static void TearDownTestCase()
         {
@@ -40,8 +42,8 @@ RetainMaxNElems<int> AlgorsTest::max_n_int_ (100);
 //	EXPECT_EQ(vector<int>(sorted_vec.end() - 100, sorted_vec.end()), buff);
 //}
 
-//ÓĞÒ»µãĞèÒª×¢Òâ£¬RetainMaxNElemsÖĞÔªËØµÄ¸öÊı²»Ò»¶¨¸ÕºÃµÈÓÚÉè¶¨µÄ×î´óÖµ
-//ÒòÎªÊäÈëÊı¾İµÄ¸öÊıĞ¡ÓÚÉè¶¨µÄ×î´óÔªËØ¸öÊı
+//æœ‰ä¸€ç‚¹éœ€è¦æ³¨æ„ï¼ŒRetainMaxNElemsä¸­å…ƒç´ çš„ä¸ªæ•°ä¸ä¸€å®šåˆšå¥½ç­‰äºè®¾å®šçš„æœ€å¤§å€¼
+//å› ä¸ºè¾“å…¥æ•°æ®çš„ä¸ªæ•°å°äºè®¾å®šçš„æœ€å¤§å…ƒç´ ä¸ªæ•°
 //TEST(RetainMaxNElems, actions){
 //	const int case_num = 99;
 //	for (int i = 0; i < case_num; i++){

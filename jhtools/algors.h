@@ -1,4 +1,4 @@
-#ifndef ALGORIS_H_
+ï»¿#ifndef ALGORIS_H_
 #define ALGORIS_H_
 #include<iostream>
 #include<algorithm>
@@ -14,18 +14,18 @@ namespace jhtools
 #ifdef _NOEXCEPT
     #define noexcept _NOEXCEPT
 #endif
-	//ÏÂÃæµÄº¯ÊıµÄ²âÊÔÄ£¿éÄ¬ÈÏÊÇ¹Ø±ÕµÄ£¨ÒòÎªÌ«ºÄÊ±£©£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
-    //*************Ê¹ÓÃRetainMaxNElemsÇ°ĞèÒªÎªÆäÖĞ±£´æµÄÔªËØÖØÔØÔËËã·û  >  ***************
-    //Ò²¿ÉÒÔÖ±½ÓÖØÔØ<  Óë == È»ºóÊ¹ÓÃusing namespase std::rel_ops  utilityÖĞµÄ¹¤¾ß
-    //ÏÂÃæÊ¹ÓÃÁ½ÖÖ·½Ê½ÊµÏÖRetainMaxNElems£¬·Ö±ğÊÇÓÅÏÈ¶ÓÁĞÓë¶Ñ£¬
-    //ÔÚC++ÖĞÓÅÏÈ¶ÓÁĞÒ²ÊÇÊ¹ÓÃ¶ÑÊµÏÖµÄ£¬µ«ÔÚµ±Ç°³¡¾°ÏÂÊ¹ÓÃÓÅÏÈ¶ÓÁĞÃ»ÓĞÖ±½ÓÊ¹ÓÃ¶Ñ·½±ã
-    //´Ódebug»·¾³ÏÂµÄ²âÊÔÀ´¿´£¬»¹ÊÇµÚ¶şÖÖ·½Ê½Ğ§ÂÊ×îµÍ£¬µÚÈıÖÖ·½Ê½×îºÃÀí½â
+    //ä¸‹é¢çš„å‡½æ•°çš„æµ‹è¯•æ¨¡å—é»˜è®¤æ˜¯å…³é—­çš„ï¼ˆå› ä¸ºå¤ªè€—æ—¶ï¼‰ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼
+    //*************ä½¿ç”¨RetainMaxNElemså‰éœ€è¦ä¸ºå…¶ä¸­ä¿å­˜çš„å…ƒç´ é‡è½½è¿ç®—ç¬¦  >  ***************
+    //ä¹Ÿå¯ä»¥ç›´æ¥é‡è½½<  ä¸ == ç„¶åä½¿ç”¨using namespase std::rel_ops  utilityä¸­çš„å·¥å…·
+    //ä¸‹é¢ä½¿ç”¨ä¸¤ç§æ–¹å¼å®ç°RetainMaxNElemsï¼Œåˆ†åˆ«æ˜¯ä¼˜å…ˆé˜Ÿåˆ—ä¸å †ï¼Œ
+    //åœ¨C++ä¸­ä¼˜å…ˆé˜Ÿåˆ—ä¹Ÿæ˜¯ä½¿ç”¨å †å®ç°çš„ï¼Œä½†åœ¨å½“å‰åœºæ™¯ä¸‹ä½¿ç”¨ä¼˜å…ˆé˜Ÿåˆ—æ²¡æœ‰ç›´æ¥ä½¿ç”¨å †æ–¹ä¾¿
+    //ä»debugç¯å¢ƒä¸‹çš„æµ‹è¯•æ¥çœ‹ï¼Œè¿˜æ˜¯ç¬¬äºŒç§æ–¹å¼æ•ˆç‡æœ€ä½ï¼Œç¬¬ä¸‰ç§æ–¹å¼æœ€å¥½ç†è§£
     //#define PRIORITY_QUEUE
     //#define STL_MAKE_HEAP
 #define STL_MULTISET
 #ifdef PRIORITY_QUEUE    //else use heap 
-    //ÏÂÃæµÄ½á¹¹ÌåÓÃÓÚ±£´æM¸öÊı¾İÖĞ×î´óµÄN¸ö£¨£Í>=N£©
-    //Ê¹ÓÃÓÅÏÈ¶ÓÁĞÀ´±£´æÊı¾İ
+    //ä¸‹é¢çš„ç»“æ„ä½“ç”¨äºä¿å­˜Mä¸ªæ•°æ®ä¸­æœ€å¤§çš„Nä¸ªï¼ˆï¼­>=Nï¼‰
+    //ä½¿ç”¨ä¼˜å…ˆé˜Ÿåˆ—æ¥ä¿å­˜æ•°æ®
     template<typename T>
     struct RetainMaxNElems
     {
@@ -87,7 +87,7 @@ namespace jhtools
             const unsigned int max_size_;
     };
 #elif defined(STL_MAKE_HEAP)
-    //ÏÂÃæÊ¹ÓÃĞ¡¶¥¶ÑÀ´ÊµÏÖ
+    //ä¸‹é¢ä½¿ç”¨å°é¡¶å †æ¥å®ç°
     template<typename T>
     struct RetainMaxNElems
     {
@@ -161,7 +161,7 @@ namespace jhtools
             std::vector<T> data_;
             const unsigned int max_size_;
     };
-#elif defined(STL_MULTISET)  //Ê¹ÓÃmultisetµÄÊµÏÖ
+#elif defined(STL_MULTISET)  //ä½¿ç”¨multisetçš„å®ç°
     template<typename T>
     struct RetainMaxNElems
     {

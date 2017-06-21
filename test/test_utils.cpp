@@ -1,4 +1,4 @@
-#include<gtest/gtest.h>
+ï»¿#include<gtest/gtest.h>
 #include"jhtools/utils.h"
 #include<string>
 
@@ -126,7 +126,7 @@ TEST (stojson, fun)
 	auto jn = stojson(j_str);
 	//cout << jn["china"].int_value() << endl;
 	EXPECT_EQ(jn["china"].int_value(),960);
-	//Ö»ÓÐÀàÐÍ¶ÔÓ¦ÕýÈ·²ÅÄÜ»ñµÃÕýÈ·µÄ½á¹û
+	//åªæœ‰ç±»åž‹å¯¹åº”æ­£ç¡®æ‰èƒ½èŽ·å¾—æ­£ç¡®çš„ç»“æžœ
 	EXPECT_EQ(jn["china"].string_value().size(), 0);
 
 }
@@ -135,6 +135,6 @@ TEST(ftojson, fun){
 
 	auto jn = ftojson(path(test_data_path+"/json.txt").string());
     EXPECT_EQ (jn["china"].int_value(), 960);
-    //Ö»ÓÐÀàÐÍ¶ÔÓ¦ÕýÈ·²ÅÄÜ»ñµÃÕýÈ·µÄ½á¹û
+    //åªæœ‰ç±»åž‹å¯¹åº”æ­£ç¡®æ‰èƒ½èŽ·å¾—æ­£ç¡®çš„ç»“æžœ
     EXPECT_EQ (jn["china"].string_value().size(), 0);
 }

@@ -1,4 +1,4 @@
-#ifndef JHTOOLS_UTILS_
+ï»¿#ifndef JHTOOLS_UTILS_
 #define JHTOOLS_UTILS_
 #include<string>
 #include<vector>
@@ -22,7 +22,7 @@ namespace jhtools
     //return all substrs between pre_delim and rear_delim in src_str
     inline std::vector<std::string> substrs (const std::string &src_str, const std::string &pre_delim, const std::string &rear_delim);
     inline json11::Json stojson (const std::string& json_str);
-    inline json11::Json ftojson (const std::string& file); //¶ÁÈ¡ÎÄ¼ş²¢½«ÆäÖĞµÄÄÚÈİ×ª»¯Îªjson¶ÔÏó
+    inline json11::Json ftojson (const std::string& file); //è¯»å–æ–‡ä»¶å¹¶å°†å…¶ä¸­çš„å†…å®¹è½¬åŒ–ä¸ºjsonå¯¹è±¡
     
     
     
@@ -185,14 +185,14 @@ namespace jhtools
         if (!exists (path (file)))
         {
             EZLOG (Log_level::FATAL) << "can not open file :" << file;
-			return json11::Json();
+            return json11::Json();
         }
         
         else
         {
             std::ifstream in (file);
             std::string str (static_cast<std::stringstream const&> (std::stringstream() << in.rdbuf()).str());
-			return stojson(str);
+            return stojson (str);
         }
     }//ftojson
 }//namespace jhtools

@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 #include<string>
 #include<deque>
 #include<gtest/gtest.h>
@@ -96,7 +96,7 @@ TEST (path, list_dir)
     EXPECT_NE (10, list_dir (test_data_path + "/path_test", ListFileType::ALL).size());
     EXPECT_EQ (7, list_dir (test_data_path + "/path_test/icons", ListFileType::ALL).size());
     EXPECT_EQ (7, list_dir (test_data_path + "/path_test/icons", ListFileType::ALL).size());
-    EXPECT_EQ (7, list_dir (test_data_path + "/path_test/config", ListFileType::ALL).size());
+    EXPECT_EQ (6, list_dir (test_data_path + "/path_test/config", ListFileType::ALL).size());
     EXPECT_EQ (0, list_dir (test_data_path + "/path_test/config", ListFileType::DIR).size());
 }
 

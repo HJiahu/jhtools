@@ -1,4 +1,4 @@
-#ifndef JHTOOLS_H_
+﻿#ifndef JHTOOLS_H_
 #define JHTOOLS_H_
 
 #include"jhtools/ezlog.h"

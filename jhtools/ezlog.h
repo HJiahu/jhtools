@@ -1,4 +1,4 @@
-#ifndef EZLOG_h_
+﻿#ifndef EZLOG_h_
 #define EZLOG_h_
 
 #include<cstdio>
@@ -13,7 +13,7 @@
 
 namespace jhtools
 {
-	inline std::string current_time_YMDT();
+    inline std::string current_time_YMDT();
     /****** configures ******/
     //logs will be storaged in file LOG_FILE_NAME
     static std::string LOG_FILE_NAME ("ezlog.log");

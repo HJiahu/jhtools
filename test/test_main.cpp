@@ -1,4 +1,4 @@
-#include<gtest/gtest.h>
+﻿#include<gtest/gtest.h>
 #include<iostream>
 #include<jhtools.h>
 #include<jhtools/ezlog.h>
@@ -8,7 +8,7 @@ using namespace jhtools;
 #if defined(_WIN32)
     string test_data_path (R"(E:\jhtools\test)");
 #else
-    string test_data_path("./");
+    string test_data_path ("./");
     
 #endif
 
