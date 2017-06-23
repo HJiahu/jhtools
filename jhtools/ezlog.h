@@ -103,7 +103,7 @@ namespace jhtools
                     writeline2logfile (str);
                 }
                 
-                writeline2console (str, TERM_COLOR::ON_GREY);
+                writeline2console (str, TERM_COLOR::GREEN);
             }
             void log_debug (const std::string&msg) //cyan
             {
