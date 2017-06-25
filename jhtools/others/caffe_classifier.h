@@ -2,6 +2,17 @@
 #define CAFFE_CLASSFIER_H_
 
 #include <caffe/caffe.hpp>
+#ifdef _WIN32
+    #include "caffe/common.hpp"
+    #include "caffe/layers/input_layer.hpp"
+    #include "caffe/layers/inner_product_layer.hpp"
+    #include "caffe/layers/dropout_layer.hpp"
+    #include "caffe/layers/conv_layer.hpp"
+    #include "caffe/layers/relu_layer.hpp"
+    #include "caffe/layers/pooling_layer.hpp"
+    #include "caffe/layers/lrn_layer.hpp"
+    #include "caffe/layers/softmax_layer.hpp"
+#endif
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -12,6 +23,22 @@
 #include <utility>
 #include <vector>
 
+namespace caffe
+{
+    extern INSTANTIATE_CLASS (InputLayer);
+	extern INSTANTIATE_CLASS(InnerProductLayer);
+	extern INSTANTIATE_CLASS(DropoutLayer);
+	extern INSTANTIATE_CLASS(ConvolutionLayer);
+	//REGISTER_LAYER_CLASS(Convolution);
+	extern INSTANTIATE_CLASS(ReLULayer);
+	//REGISTER_LAYER_CLASS(ReLU);
+	extern INSTANTIATE_CLASS(PoolingLayer);
+	//REGISTER_LAYER_CLASS(Pooling);
+	extern INSTANTIATE_CLASS(LRNLayer);
+	//REGISTER_LAYER_CLASS(LRN);
+	extern INSTANTIATE_CLASS(SoftmaxLayer);
+	//REGISTER_LAYER_CLASS(Softmax);
+}
 
 using namespace caffe;  // NOLINT(build/namespaces)
 using std::string;
@@ -80,9 +107,8 @@ class Classifier
             string mean_file = cnn_model_path + suffix + "mean.binaryproto";
             string label_file = cnn_model_path + suffix + "label.txt";
             Classifier (deploy_file, model_file, mean_file, label_file);
-			
-			//可以使用构造函数委托
-            *this = Classifier(deploy_file, model_file, mean_file, label_file);
+            //可以使用构造函数委托
+            *this = Classifier (deploy_file, model_file, mean_file, label_file);
         }
         std::vector<Prediction> Classify (const cv::Mat& img, int N = 2)
         {
