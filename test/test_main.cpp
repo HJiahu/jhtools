@@ -2,18 +2,19 @@
 #include<iostream>
 #include<jhtools.h>
 #include<jhtools/ezlog.h>
+#include<jhtools/utils.h>
 using namespace std;
 using namespace jhtools;
 
 #if defined(_WIN32)
-    string test_data_path (R"(E:\jhtools\test)");
+    string test_data_path (R"(G:\jhtools\test)");
 #else
     string test_data_path ("./");
     
 #endif
 
 
-#define TEST_JHTOOLS
+//#define TEST_JHTOOLS
 
 #ifdef TEST_JHTOOLS
 int main (int argc, char ** argv)
@@ -30,15 +31,14 @@ int main (int argc, char ** argv)
 #endif
 }
 #else
+
+
+
 int main()
 {
-    string j_str (R"({
-"china":960,
-"canada":998
-}
-)");
-	auto jn = stojson(j_str);
-
-	system("pause");
+    cout << make_json ({ { "china", 960 }, { "russia", "1707" }, { "america", 936 } }).dump() << endl;
+#ifdef _MSC_VER
+    system ("pause");
+#endif
 }
 #endif

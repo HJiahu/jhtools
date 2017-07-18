@@ -4,6 +4,7 @@
 #include<vector>
 #include<fstream>
 #include<sstream>
+#include<initializer_list>
 #include"ezlog.h"
 #include"path.h"
 #include"json11.h"
@@ -23,7 +24,7 @@ namespace jhtools
     inline std::vector<std::string> substrs (const std::string &src_str, const std::string &pre_delim, const std::string &rear_delim);
     inline json11::Json stojson (const std::string& json_str);
     inline json11::Json ftojson (const std::string& file); //读取文件并将其中的内容转化为json对象
-    
+    using make_json = json11::Json;
     
     
     
@@ -195,6 +196,8 @@ namespace jhtools
             return stojson (str);
         }
     }//ftojson
+    
+    
 }//namespace jhtools
 
 

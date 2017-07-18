@@ -12,8 +12,10 @@
 #include <utility>
 #include <vector>
 
-#ifdef _WIN32
+#ifdef  _MSC_VER
 #include "caffe/common.hpp"
+#include "caffe/layers/batch_norm_layer.hpp"
+#include "caffe/layers/bias_layer.hpp"
 #include "caffe/layers/input_layer.hpp"
 #include "caffe/layers/inner_product_layer.hpp"
 #include "caffe/layers/dropout_layer.hpp"
@@ -25,19 +27,21 @@
 
 namespace caffe
 {
+    extern INSTANTIATE_CLASS (BatchNormLayer);
+    extern INSTANTIATE_CLASS (BiasLayer);
     extern INSTANTIATE_CLASS (InputLayer);
     extern INSTANTIATE_CLASS (InnerProductLayer);
     extern INSTANTIATE_CLASS (DropoutLayer);
     extern INSTANTIATE_CLASS (ConvolutionLayer);
-    //REGISTER_LAYER_CLASS(Convolution);
+    //REGISTER_LAYER_CLASS (Convolution);
     extern INSTANTIATE_CLASS (ReLULayer);
-    //REGISTER_LAYER_CLASS(ReLU);
+    //REGISTER_LAYER_CLASS (ReLU);
     extern INSTANTIATE_CLASS (PoolingLayer);
-    //REGISTER_LAYER_CLASS(Pooling);
+    //REGISTER_LAYER_CLASS (Pooling);
     extern INSTANTIATE_CLASS (LRNLayer);
-    //REGISTER_LAYER_CLASS(LRN);
+    //REGISTER_LAYER_CLASS (LRN);
     extern INSTANTIATE_CLASS (SoftmaxLayer);
-    //REGISTER_LAYER_CLASS(Softmax);
+    //REGISTER_LAYER_CLASS (Softmax);
 }
 #endif
 
