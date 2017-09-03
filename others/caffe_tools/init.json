@@ -1,0 +1,8 @@
+{
+"model_file_path":"D:/age_gender/caffenet/age/deploy.prototxt",
+"trained_file_path":"D:/age_gender/caffenet/age/model.caffemodel",
+"mean_file_path":"D:/age_gender/caffenet/age/mean.binaryproto",
+"label_file_path":"D:/age_gender/caffenet/age/label.txt",
+"file_type":"DIR",
+"file_path":"D:/age_gender/mini_faces/25-34"
+}

@@ -11,6 +11,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <ostream>
 
 #ifdef  _MSC_VER
 #include "caffe/common.hpp"
@@ -51,6 +52,11 @@ using std::string;
 
 /* Pair (label, confidence) representing a prediction. */
 typedef std::pair<string, float> Prediction;
+inline std::ostream& operator<< (std::ostream& out, const Prediction&pred)
+{
+    out << "[" << pred.first << ", " << pred.second << "]";
+    return out;
+}
 static bool PairCompare (const std::pair<float, int>& lhs,
                          const std::pair<float, int>& rhs);
 /* Return the indices of the top N values of vector v. */
