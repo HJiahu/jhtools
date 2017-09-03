@@ -14,7 +14,7 @@ using namespace jhtools;
 #endif
 
 
-//#define TEST_JHTOOLS
+#define TEST_JHTOOLS
 
 #ifdef TEST_JHTOOLS
 int main (int argc, char ** argv)
