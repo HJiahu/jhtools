@@ -54,7 +54,7 @@ using std::string;
 typedef std::pair<string, float> Prediction;
 inline std::ostream& operator<< (std::ostream& out, const Prediction&pred)
 {
-    out << "[" << pred.first << ", " << pred.second << "]";
+    out << "[" << pred.first << ", " << pred.second * 100.0 << "%]";
     return out;
 }
 static bool PairCompare (const std::pair<float, int>& lhs,

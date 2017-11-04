@@ -5,32 +5,18 @@
 #include"jhtools/path.h"
 #include"jhtools/ezlog.h"
 #include"jhtools/utils.h"
-static jhtools::path model_file_path_g;
-static jhtools::path trained_file_path_g;
-static jhtools::path mean_file_path_g;
-static jhtools::path label_file_path_g;
-static std::string file_type_g;//有两种选择：FILE、DIR
-static jhtools::path file_path_g;
 
-inline void init_env (const jhtools::path & config_file_path)
-{
-    if (!jhtools::exists (config_file_path) || config_file_path.extension() != ".json")
-    {
-        EZLOG (jhtools::Log_level::FATAL) << "config file error: " << config_file_path.string();
-    }
-    
-    else
-    {
-        auto jn = jhtools::ftojson (config_file_path.string());
-        model_file_path_g = jn["model_file_path"].string_value();
-        trained_file_path_g = jn["trained_file_path"].string_value();
-        mean_file_path_g = jn["mean_file_path"].string_value();
-        label_file_path_g = jn["label_file_path"].string_value();
-        file_type_g = jn["file_type"].string_value();
-        file_path_g = jn["file_path"].string_value();
-    }
-    
-    assert (model_file_path_g.length() *trained_file_path_g.length() *mean_file_path_g.length() *label_file_path_g.length() != 0);
-}
+//从json文件中解析而来的数据都将保存在下面的变量中
+extern jhtools::Json configs_json_g;
+//action指定了当前函数的行为，不同的action当前函数将有不同的行为，也会使用json中不同的数据项
+extern  std::string action_g;
+//caffe模型路径可以使用两种方式指定，separate和single
+//如果path_mode_g是single则model_path_all_in_g中需要包含所有caffe需要的四个文件，并要满足命名规则
+extern  std::string path_mode_g;
+extern  jhtools::path model_path_all_in_g;
+//声明全局的caffe分类对象
+class Classifier;
+extern Classifier* classifier_ptr_g;
 
+void init_env (const jhtools::path & config_file_path);
 #endif

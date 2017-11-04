@@ -7,7 +7,7 @@
     BSD-style license that can be found in the LICENSE file.
 */
 /*********************************************************************
-	some code was changed, for example the extension method ,it will 
+	some code was changed, for example the extension method ,it will
 	return suffix with dot . (path("foo.out").extension() is ".out")
 	just like C++17 dose.
 **********************************************************************/
@@ -173,7 +173,7 @@ namespace TinyPath
                 if (pos == std::string::npos)
                 { return ""; }
                 
-                return name.substr (pos );
+                return name.substr (pos);
             }
             
             std::string filename() const
@@ -246,36 +246,36 @@ namespace TinyPath
                 
                 return oss.str();
             }
-
-			std::string string(path_type type = native_path) const
-			{
-				std::ostringstream oss;
-
-				if (m_type == posix_path && m_absolute)
-				{
-					oss << "/";
-				}
-
-				for (size_t i = 0; i < m_path.size(); ++i)
-				{
-					oss << m_path[i];
-
-					if (i + 1 < m_path.size())
-					{
-						if (type == posix_path)
-						{
-							oss << '/';
-						}
-
-						else
-						{
-							oss << '\\';
-						}
-					}
-				}
-
-				return oss.str();
-			}
+            
+            std::string string (path_type type = native_path) const
+            {
+                std::ostringstream oss;
+                
+                if (m_type == posix_path && m_absolute)
+                {
+                    oss << "/";
+                }
+                
+                for (size_t i = 0; i < m_path.size(); ++i)
+                {
+                    oss << m_path[i];
+                    
+                    if (i + 1 < m_path.size())
+                    {
+                        if (type == posix_path)
+                        {
+                            oss << '/';
+                        }
+                        
+                        else
+                        {
+                            oss << '\\';
+                        }
+                    }
+                }
+                
+                return oss.str();
+            }
             
             void set (const std::string &str, path_type type = native_path)
             {
