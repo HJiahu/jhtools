@@ -1,7 +1,8 @@
-#include<opencv2/opencv.hpp>
+﻿#include<opencv2/opencv.hpp>
 #include<jhtools/others/caffe_classifier.h>
 #include"actions.h"
 #include<iostream>
+#include<sstream>
 #include"jhtools/json11.h"
 #include"jhtools/ezlog.h"
 #include"jhtools/utils.h"
@@ -10,6 +11,22 @@ using namespace std;
 using namespace jhtools;
 namespace caffe_tool_actions
 {
+    inline string caffe_model_path()
+    {
+        ostringstream ostr;
+        
+        if (path_mode_g == "single")
+        {
+            ostr << "caffe model path: " << configs_json_g["model_path_all_in"].string_value() + "model.caffemodel" << endl;
+        }
+        
+        else
+        {
+            ostr << "caffe model path: " << configs_json_g["model_file_path"].string_value() << endl;
+        }
+        
+        return ostr.str();
+    }
     std::map < std::string, std::shared_ptr<Action> > ActionFactory::actions_;
     void ModelSpeed::execute() const
     {
@@ -26,10 +43,7 @@ namespace caffe_tool_actions
         cout << "test model speed in this PC. " << endl;
         cout << "img path: " << img_path.string() << endl;
         cout << "repetition_count: " << repetition_count << endl;
-	if(path_mode_g == "single")
-		cout << "caffe model path: " << configs_json_g["model_path_all_in"].string_value()+"model.caffemodel" << endl;
-	else 
-        	cout << "caffe model path: " << configs_json_g["model_file_path"].string_value() << endl;
+        cout << caffe_model_path();
         cout << "doing";
         chrono::system_clock::time_point start = chrono::system_clock::now();
         
@@ -63,12 +77,9 @@ namespace caffe_tool_actions
         
         else
         {
-	    cout << "classify img "<<endl;
+            cout << "classify img " << endl;
             cout << "img path: " << img_path.string() << endl;
-	if(path_mode_g == "single")
-		cout << "caffe model path: " << configs_json_g["model_path_all_in"].string_value()+"model.caffemodel" << endl;
-	else 
-        	cout << "caffe model path: " << configs_json_g["model_file_path"].string_value() << endl;
+            cout << caffe_model_path();
             cout << "doing" << endl;
             auto result = classifier_ptr_g->Classify (img, configs_json_g["category_num"].int_value());
             cout << "\n*********   predict results:   *********" << endl;
@@ -108,10 +119,7 @@ namespace caffe_tool_actions
         cout << endl;
         unsigned int img_count = 0;
         for_each (results.begin(), results.end(), [&] (const pair<string, int> & p) {img_count += p.second; });
-	if(path_mode_g == "single")
-	        cout << "caffe model path: " << configs_json_g["model_path_all_in"].string_value()+"model.caffemodel" << endl;
-	else 
-        	cout << "caffe model path: " << configs_json_g["model_file_path"].string_value() << endl;
+        cout << caffe_model_path();
         cout << "\n*********   predict results:   *********" << endl;
         cout << "img_count: " << img_count << endl;
         for_each (results.begin(), results.end(), [ = ] (const pair<string, int> & p)
@@ -122,7 +130,7 @@ namespace caffe_tool_actions
     
     void ActionFactory::regist_all()
     {
-        /******************** Ö»ÓÐÐŽºÃµÄaction×¢²áµœÕâÀï²Å»áÉúÐ§ ********************/
+        /******************** 所有action注册到这里才会生效 ********************/
         regist (std::shared_ptr<Action> (new DirImgsClassifier ("classify_img_in_dir")));
         regist (std::shared_ptr<Action> (new ImgClassifier ("classify_one_img")));
         regist (std::shared_ptr<Action> (new ModelSpeed ("test_time_consumption")));
@@ -130,7 +138,7 @@ namespace caffe_tool_actions
         //regist(std::shared_ptr<Action>(new ImgClassifier("classify_one_img")));
         /***************************************/
         //disply infos
-        cout << "\n (◕ ‿ ◕ ✿) Actions can be used  (◕ ‿ ◕ ✿)" << endl;
+        cout << "\n (O__O\")  Actions can be used  (O__O\") " << endl;
         int count = 1;
         
         for (auto const&item : actions_)
@@ -138,6 +146,6 @@ namespace caffe_tool_actions
             cout << count++ << ". " << item.first << ";" << endl;
         }
         
-        cout << "\n                 (◕ ‿ ◕ ✿)                   \n" << endl;
+        cout << "\n            (O__O\")              \n" << endl;
     }
 }

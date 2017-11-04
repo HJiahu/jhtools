@@ -1,12 +1,12 @@
-#include"jhtools/others/caffe_classifier.h"
+ï»¿#include"jhtools/others/caffe_classifier.h"
 #include"configs.h"
 
-//´ÓjsonÎÄ¼şÖĞ½âÎö¶øÀ´µÄÊı¾İ¶¼½«±£´æÔÚÏÂÃæµÄ±äÁ¿ÖĞ
+//ä»jsonæ–‡ä»¶ä¸­è§£æè€Œæ¥çš„æ•°æ®éƒ½å°†ä¿å­˜åœ¨ä¸‹é¢çš„å˜é‡ä¸­
 jhtools::Json configs_json_g;
-//actionÖ¸¶¨ÁËµ±Ç°º¯ÊıµÄĞĞÎª£¬²»Í¬µÄactionµ±Ç°º¯Êı½«ÓĞ²»Í¬µÄĞĞÎª£¬Ò²»áÊ¹ÓÃjsonÖĞ²»Í¬µÄÊı¾İÏî
+//actionæŒ‡å®šäº†å½“å‰å‡½æ•°çš„è¡Œä¸ºï¼Œä¸åŒçš„actionå½“å‰å‡½æ•°å°†æœ‰ä¸åŒçš„è¡Œä¸ºï¼Œä¹Ÿä¼šä½¿ç”¨jsonä¸­ä¸åŒçš„æ•°æ®é¡¹
 std::string action_g;
-//caffeÄ£ĞÍÂ·¾¶¿ÉÒÔÊ¹ÓÃÁ½ÖÖ·½Ê½Ö¸¶¨£¬separateºÍsingle
-//Èç¹ûpath_mode_gÊÇsingleÔòmodel_path_all_in_gÖĞĞèÒª°üº¬ËùÓĞcaffeĞèÒªµÄËÄ¸öÎÄ¼ş£¬²¢ÒªÂú×ãÃüÃû¹æÔò
+//caffeæ¨¡å‹è·¯å¾„å¯ä»¥ä½¿ç”¨ä¸¤ç§æ–¹å¼æŒ‡å®šï¼Œseparateå’Œsingle
+//å¦‚æœpath_mode_gæ˜¯singleåˆ™model_path_all_in_gä¸­éœ€è¦åŒ…å«æ‰€æœ‰caffeéœ€è¦çš„å››ä¸ªæ–‡ä»¶ï¼Œå¹¶è¦æ»¡è¶³å‘½åè§„åˆ™
 std::string path_mode_g;
 jhtools::path model_path_all_in_g;
 int prompt_count_g;
@@ -48,7 +48,7 @@ void init_env (const jhtools::path & config_file_path)
                                                    label_file_path);
             }
             
-        //ÉèÖÃcaffeµÄÔËĞĞÄ£Ê½£¬CPU»òGPU
+        //è®¾ç½®caffeçš„è¿è¡Œæ¨¡å¼ï¼ŒCPUæˆ–GPU
         if (configs_json_g["caffe_model"].string_value() == "CPU")
         {
             Caffe::set_mode (Caffe::CPU);

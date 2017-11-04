@@ -1,4 +1,4 @@
-#ifndef CAFFE_TOLLS_ACTIONS_
+ï»¿#ifndef CAFFE_TOLLS_ACTIONS_
 #define CAFFE_TOLLS_ACTIONS_
 #include<string>
 #include<map>
@@ -8,23 +8,23 @@
 
 namespace caffe_tool_actions
 {
-	//Ã¿Ò»¸öĞĞÎª¶¼¼Ì³ĞÓÚÏÂÃæµÄÀà
+	//æ¯ä¸€ä¸ªè¡Œä¸ºéƒ½ç»§æ‰¿äºä¸‹é¢çš„ç±»
     class Action
     {
         public:
             Action (const std::string& action_str, const jhtools::Json& config_json = configs_json_g)
                 : action_str_ (action_str), config_json_ (config_json) {}
             const std::string& action_str() const { return action_str_; }
-            virtual void execute() const = 0; //Ö´ĞĞ¾ßÌåµÄĞĞÎª
+            virtual void execute() const = 0; //æ‰§è¡Œå…·ä½“çš„è¡Œä¸º
             void operator() () const
             {
                 return execute();
             }
         protected:
-            std::string action_str_;//ÃèÊöµ±Ç°¶ÔÏóµÄĞĞÎª
+            std::string action_str_;//æè¿°å½“å‰å¯¹è±¡çš„è¡Œä¸º
             const jhtools::Json& config_json_;
     };
-    //Ê¹ÓÃ·´ÉäÉú³ÉÒ»¸öaction¶ÔÏó£¬²»¿¼ÂÇ¶àÏß³ÌµÄÊ¹ÓÃËùÒÔÕâÀï²»¿¼ÂÇ»¥³â
+    //ä½¿ç”¨åå°„ç”Ÿæˆä¸€ä¸ªactionå¯¹è±¡ï¼Œä¸è€ƒè™‘å¤šçº¿ç¨‹çš„ä½¿ç”¨æ‰€ä»¥è¿™é‡Œä¸è€ƒè™‘äº’æ–¥
     class ActionFactory final
     {
         public:
@@ -58,7 +58,7 @@ namespace caffe_tool_actions
                 
                 else
                 {
-                    //ÓĞĞ©keyÒÑ¾­´æÔÚÁË¾Í²»ÄÜÔÙÓÃ²»È»»á·¢ÉúÆçÒå
+                    //æœ‰äº›keyå·²ç»å­˜åœ¨äº†å°±ä¸èƒ½å†ç”¨ä¸ç„¶ä¼šå‘ç”Ÿæ­§ä¹‰
                     if (actions_.find (action_ptr->action_str()) != actions_.end())
                     {
                         EZLOG (jhtools::Log_level::FATAL) << "resue key: " << action_ptr->action_str();
@@ -69,7 +69,7 @@ namespace caffe_tool_actions
                 }
             }
         private:
-            //Ã¿Ò»¸öĞ´³ÉµÄaction¶ÔÏó¶¼½«ÔÚÕâ¸öº¯ÊıÖĞ×¢²áµ½action¹¤³§
+            //æ¯ä¸€ä¸ªå†™æˆçš„actionå¯¹è±¡éƒ½å°†åœ¨è¿™ä¸ªå‡½æ•°ä¸­æ³¨å†Œåˆ°actionå·¥å‚
             static void regist_all();
         private:
             static std::map < std::string, std::shared_ptr<Action> > actions_;
@@ -77,14 +77,14 @@ namespace caffe_tool_actions
     
     
     
-    //ÏÂÃæµÄĞĞÎª¶ÔÍ¼Æ¬½øĞĞ·ÖÀà²¢ÏÔÊ¾·ÖÀà½á¹û
+    //ä¸‹é¢çš„è¡Œä¸ºå¯¹å›¾ç‰‡è¿›è¡Œåˆ†ç±»å¹¶æ˜¾ç¤ºåˆ†ç±»ç»“æœ
     class ImgClassifier final : public Action
     {
         public:
             using Action::Action;
             void execute() const override;
     };
-    //¶ÔÒ»¸öÎÄ¼ş¼ĞÏÂµÄÍ¼Æ¬½øĞĞ·ÖÀà²¢ÏÔÊ¾·ÖÀà½á¹û
+    //å¯¹ä¸€ä¸ªæ–‡ä»¶å¤¹ä¸‹çš„å›¾ç‰‡è¿›è¡Œåˆ†ç±»å¹¶æ˜¾ç¤ºåˆ†ç±»ç»“æœ
     class DirImgsClassifier final : public Action
     {
         public:
@@ -92,7 +92,7 @@ namespace caffe_tool_actions
             void execute() const override;
     };
     
-    //ÏÂÃæµÄĞĞÎªÓÃÓÚ»ñµÃÄ£ĞÍÔÚµ±Ç°»·¾³ÏÂÖ´ĞĞµÄÊ±¼ä
+    //ä¸‹é¢çš„è¡Œä¸ºç”¨äºè·å¾—æ¨¡å‹åœ¨å½“å‰ç¯å¢ƒä¸‹æ‰§è¡Œçš„æ—¶é—´
     class ModelSpeed final: public Action
     {
         public:
