@@ -11,21 +11,22 @@ using namespace std;
 using namespace jhtools;
 namespace caffe_tool_actions
 {
-    inline string caffe_model_path()
+    inline string caffe_infos()
     {
-        ostringstream ostr;
+        ostringstream infos;
         
         if (path_mode_g == "single")
         {
-            ostr << "caffe model path: " << configs_json_g["model_path_all_in"].string_value() + "model.caffemodel" << endl;
+            infos << "caffe model path: " << configs_json_g["model_path_all_in"].string_value() + "model.caffemodel" << endl;
         }
         
         else
         {
-            ostr << "caffe model path: " << configs_json_g["model_file_path"].string_value() << endl;
+            infos << "caffe model path: " << configs_json_g["model_file_path"].string_value() << endl;
         }
         
-        return ostr.str();
+        infos << "caffe model: " << configs_json_g["caffe_model"].string_value() << endl;
+        return infos.str();
     }
     std::map < std::string, std::shared_ptr<Action> > ActionFactory::actions_;
     void ModelSpeed::execute() const
@@ -43,7 +44,7 @@ namespace caffe_tool_actions
         cout << "test model speed in this PC. " << endl;
         cout << "img path: " << img_path.string() << endl;
         cout << "repetition_count: " << repetition_count << endl;
-        cout << caffe_model_path();
+        cout << caffe_infos();
         cout << "doing";
         chrono::system_clock::time_point start = chrono::system_clock::now();
         
@@ -79,7 +80,7 @@ namespace caffe_tool_actions
         {
             cout << "classify img " << endl;
             cout << "img path: " << img_path.string() << endl;
-            cout << caffe_model_path();
+            cout << caffe_infos();
             cout << "doing" << endl;
             auto result = classifier_ptr_g->Classify (img, configs_json_g["category_num"].int_value());
             cout << "\n*********   predict results:   *********" << endl;
@@ -94,6 +95,7 @@ namespace caffe_tool_actions
         map<string, int> results;
         int process_count = 0;
         cout << "classifying imgs in dir." << endl;
+        cout << caffe_infos();
         cout << "doing";
         
         for (const auto &f : files)
@@ -119,7 +121,6 @@ namespace caffe_tool_actions
         cout << endl;
         unsigned int img_count = 0;
         for_each (results.begin(), results.end(), [&] (const pair<string, int> & p) {img_count += p.second; });
-        cout << caffe_model_path();
         cout << "\n*********   predict results:   *********" << endl;
         cout << "img_count: " << img_count << endl;
         for_each (results.begin(), results.end(), [ = ] (const pair<string, int> & p)
