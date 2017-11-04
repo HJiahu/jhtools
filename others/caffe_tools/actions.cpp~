@@ -30,7 +30,7 @@ namespace caffe_tool_actions
 		cout << "caffe model path: " << configs_json_g["model_path_all_in"].string_value()+"model.caffemodel" << endl;
 	else 
         	cout << "caffe model path: " << configs_json_g["model_file_path"].string_value() << endl;
-        cout << "doing";
+        cout << "doing"<<fflush;
         chrono::system_clock::time_point start = chrono::system_clock::now();
         
         for (int i = 0; i < repetition_count; i++)

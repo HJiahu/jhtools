@@ -2,11 +2,11 @@
 "action":"test_time_consumption",
 "path_mode":"single",
 "category_num":9,
-"prompt_count":100,
+"prompt_count":1000,
 
 "repetition_count":9999,
 
-"caffe_model":"GPU",
+"caffe_model":"CPU",
 "model_path_all_in":"./",
 "model_file_path":"./deploy.prototxt",
 "trained_file_path":"./model.caffemodel",
