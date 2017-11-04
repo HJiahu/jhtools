@@ -105,7 +105,7 @@ class Classifier
         //trained_file :model.caffemodel
         //mean_file    :mean.binaryproto
         //label_file   :label.txt
-        explicit Classifier (const string&cnn_model_path)
+        explicit Classifier (const string& cnn_model_path)
         {
             std::string suffix;
             

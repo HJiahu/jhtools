@@ -14,6 +14,7 @@ extern  std::string action_g;
 //如果path_mode_g是single则model_path_all_in_g中需要包含所有caffe需要的四个文件，并要满足命名规则
 extern  std::string path_mode_g;
 extern  jhtools::path model_path_all_in_g;
+extern int prompt_count_g;
 //声明全局的caffe分类对象
 class Classifier;
 extern Classifier* classifier_ptr_g;

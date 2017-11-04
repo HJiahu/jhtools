@@ -9,6 +9,7 @@ std::string action_g;
 //如果path_mode_g是single则model_path_all_in_g中需要包含所有caffe需要的四个文件，并要满足命名规则
 std::string path_mode_g;
 jhtools::path model_path_all_in_g;
+int prompt_count_g;
 Classifier* classifier_ptr_g;
 
 void init_env (const jhtools::path & config_file_path)
@@ -30,6 +31,8 @@ void init_env (const jhtools::path & config_file_path)
         auto trained_file_path = configs_json_g["trained_file_path"].string_value();
         auto mean_file_path = configs_json_g["mean_file_path"].string_value();
         auto label_file_path = configs_json_g["label_file_path"].string_value();
+        //init prompt_count
+        prompt_count_g = configs_json_g["prompt_count"].int_value();
         
         if (path_mode_g == "single")
         {
@@ -44,5 +47,23 @@ void init_env (const jhtools::path & config_file_path)
                                                    mean_file_path,
                                                    label_file_path);
             }
+            
+        //设置caffe的运行模式，CPU或GPU
+        if (configs_json_g["caffe_model"].string_value() == "CPU")
+        {
+            Caffe::set_mode (Caffe::CPU);
+        }
+        
+        else
+            if (configs_json_g["caffe_model"].string_value() == "GPU")
+            {
+                Caffe::set_mode (Caffe::GPU);
+            }
+            
+            else
+                if (configs_json_g["caffe_model"].string_value() == "Default")
+                {
+                    //do nothing
+                }
     }
 }

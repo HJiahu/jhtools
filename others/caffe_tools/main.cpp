@@ -18,6 +18,7 @@ using namespace caffe_tool_actions;
 
 int main (int argc, char** argv)
 {
+    //::google::InitGoogleLogging (argv[0]);
     //默认情况下使用当前文件夹下的init.json来初始化整个环境
     jhtools::path config_file_path ;
     

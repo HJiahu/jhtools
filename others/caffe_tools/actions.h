@@ -8,6 +8,7 @@
 
 namespace caffe_tool_actions
 {
+	//每一个行为都继承于下面的类
     class Action
     {
         public:
@@ -23,7 +24,7 @@ namespace caffe_tool_actions
             std::string action_str_;//描述当前对象的行为
             const jhtools::Json& config_json_;
     };
-    //使用反射的方式生成一个action对象，不考虑多线程的使用所以这里不考虑互斥
+    //使用反射生成一个action对象，不考虑多线程的使用所以这里不考虑互斥
     class ActionFactory final
     {
         public:
