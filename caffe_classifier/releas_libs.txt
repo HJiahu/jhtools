@@ -1,0 +1,12 @@
+gflags.lib
+glog.lib
+libprotobuf.lib
+libprotoc.lib
+caffe.lib
+caffeproto.lib
+boost_python3-vc140-mt-1_61.lib
+opencv_world310.lib
+libopenblas.dll.a
+caffehdf5.lib
+caffehdf5_hl.lib
+boost_thread-vc140-mt-1_61.lib
